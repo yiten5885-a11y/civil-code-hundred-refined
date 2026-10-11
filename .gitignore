@@ -1,0 +1,14 @@
+__pycache__/
+.venv/
+.DS_Store
+sources/raw/
+sources/normalized/
+rules/candidates/
+rules/approved/
+review/
+tests/LEGAL_ACCEPTANCE_WORKSHEET.md
+dist/
+reports/ENVIRONMENT.json
+reports/*PRIVATE*
+plan/DEVELOPMENT_PLAN.md
+STATE.json
