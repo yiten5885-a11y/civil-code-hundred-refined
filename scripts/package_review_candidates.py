@@ -30,7 +30,7 @@ def main():
         "tests/LEGAL_ACCEPTANCE_WORKSHEET.md",
         "plan/SOURCE_COVERAGE.md",
         "plan/SUPPLEMENT_EVIDENCE.json",
-        "skill/civil-code-plain-answers/references/scenarios.md",
+        "legacy/skill-alpha/references/scenarios.md",
         "sources/SOURCE_MANIFEST.json", "reports/SOURCE_INTEGRITY.json",
         "reports/SOURCE_HASH_AUDIT.json",
         "reports/COMPANION_EXTRACTION.json", "reports/MARRIAGE_REGISTRATION_CROSSCHECK.json", "reports/LOAN_LEASE_EXTRACTION.json",

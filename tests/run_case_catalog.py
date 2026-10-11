@@ -6,7 +6,7 @@ from pathlib import Path
 from collections import Counter
 
 ROOT = Path(__file__).resolve().parents[1]
-spec = importlib.util.spec_from_file_location("answer", ROOT / "skill/civil-code-plain-answers/scripts/answer.py")
+spec = importlib.util.spec_from_file_location("answer", ROOT / "legacy/skill-alpha/scripts/answer.py")
 answer = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(answer)
 

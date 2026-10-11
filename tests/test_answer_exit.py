@@ -9,7 +9,7 @@ import tempfile
 import unittest
 
 PROJECT = Path(__file__).resolve().parents[1]
-spec = importlib.util.spec_from_file_location("answer", PROJECT / "skill/civil-code-plain-answers/scripts/answer.py")
+spec = importlib.util.spec_from_file_location("answer", PROJECT / "legacy/skill-alpha/scripts/answer.py")
 answer = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(answer)
 
@@ -88,7 +88,7 @@ class GateTests(unittest.TestCase):
                 self.assertNotIn(self.rule["approved_text"], result["text"])
 
     def test_cli_propagates_check_failure_and_keeps_limited_reply_successful(self):
-        script = PROJECT / "skill/civil-code-plain-answers/scripts/answer.py"
+        script = PROJECT / "legacy/skill-alpha/scripts/answer.py"
         base = {"question": "押金退还", "scenario": "rent_deposit", "rule_id": "synthetic-one",
                 "facts": {"event_date": "2026-10-11", "region": "SYNTHETIC", "deposit_returned": False}}
 
@@ -109,7 +109,7 @@ class GateTests(unittest.TestCase):
         self.assertEqual((error_code, error["status"]), (2, "SYSTEM_ERROR"))
 
     def test_malformed_input_returns_structured_system_error(self):
-        script = PROJECT / "skill/civil-code-plain-answers/scripts/answer.py"
+        script = PROJECT / "legacy/skill-alpha/scripts/answer.py"
         for query in ([], {"question": ["押金"]}, {"question": "押金", "scenario": []}):
             with self.subTest(query=query):
                 run = subprocess.run([sys.executable, str(script), "--root", str(self.root)],
