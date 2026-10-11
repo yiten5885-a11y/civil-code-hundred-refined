@@ -1,3 +1,5 @@
+![民法典百炼白话问答封面：借贷、租房、婚姻财产；理清事实、查找法源、关键追问；工程内测](assets/cover.jpg)
+
 # Civil Code Plain Answers (engineering alpha)
 
 An open-source Agent Skill prototype for everyday questions about personal loans, residential leases, and marital property in mainland China. Its current public release **organizes facts and points to official sources; it does not provide reviewed legal conclusions**. The planned twelve scenarios, local Qwen drafts, and three-turn examples have not passed professional legal review. No rule is enabled in `rules/approved/`.
