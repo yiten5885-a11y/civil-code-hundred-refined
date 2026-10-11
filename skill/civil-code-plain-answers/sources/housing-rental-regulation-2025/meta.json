@@ -1,0 +1,26 @@
+{
+  "articles": {
+    "第二条": {
+      "canonical_sha256": "96b4c1760028760f939f9c744cc001f06ab2d63b72eac18f12e0a5393e923316",
+      "canonical_text": "城镇国有土地上住房租赁活动及其监督管理，适用本条例。",
+      "provision_locator": "条=第二条"
+    },
+    "第十条": {
+      "canonical_sha256": "79ea1248fb57f9fba1e1596dc000d0f6a33cc2eac5564739e6881d3857e75c8a",
+      "canonical_text": "出租人收取押金的，应当在住房租赁合同中约定押金的数额、返还时间以及扣减押金的情形等事项。除住房租赁合同约定的情形以外，出租人无正当理由不得扣减押金。",
+      "provision_locator": "条=第十条"
+    }
+  },
+  "issuer": "国务院",
+  "official_url": "https://www.mee.gov.cn/zcwj/gwywj/202507/t20250722_1123995.shtml",
+  "raw_origin": "reused-snapshot",
+  "raw_sha256": "3ecc4398c399d8082d6a3488f2afbe49f69a68739b7d9d42b7820409d3f7cff7",
+  "raw_size_bytes": 61906,
+  "raw_snapshot": "sources/housing-rental-regulation-2025/raw/2025-07-16.html",
+  "retrieved_at": "2026-10-11T15:17:00+00:00",
+  "source_id": "housing-rental-regulation-2025",
+  "source_type": "行政法规",
+  "title": "住房租赁条例（中华人民共和国国务院令第812号）",
+  "version": "2025-07-16",
+  "warnings": []
+}

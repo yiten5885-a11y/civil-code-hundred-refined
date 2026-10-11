@@ -1,0 +1,90 @@
+{
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "applicability_note": "第二条限定适用于城镇国有土地上住房租赁活动及其监督管理；自 2025-09-15 起施行，施行前发生的事实不能当然适用。",
+      "articles": [
+        {
+          "canonical_sha256": "96b4c1760028760f939f9c744cc001f06ab2d63b72eac18f12e0a5393e923316",
+          "canonical_text": "城镇国有土地上住房租赁活动及其监督管理，适用本条例。",
+          "provision_locator": "条=第二条"
+        },
+        {
+          "canonical_sha256": "79ea1248fb57f9fba1e1596dc000d0f6a33cc2eac5564739e6881d3857e75c8a",
+          "canonical_text": "出租人收取押金的，应当在住房租赁合同中约定押金的数额、返还时间以及扣减押金的情形等事项。除住房租赁合同约定的情形以外，出租人无正当理由不得扣减押金。",
+          "provision_locator": "条=第十条"
+        }
+      ],
+      "canonical_sha256": "e569b8c4a56b6c33744913ae9140fe38d16a8d5eaf3d79f86c0a4e9108a2a66e",
+      "effect_state": "IN_FORCE",
+      "effective_from": "2025-09-15",
+      "effective_to": null,
+      "issuer": "国务院",
+      "jurisdiction": "中国大陆",
+      "official_url": "https://www.mee.gov.cn/zcwj/gwywj/202507/t20250722_1123995.shtml",
+      "promulgated_on": "2025-07-16",
+      "provision_locator": "条、款、项级定位见 articles",
+      "raw_origin": "reused-snapshot",
+      "raw_sha256": "3ecc4398c399d8082d6a3488f2afbe49f69a68739b7d9d42b7820409d3f7cff7",
+      "raw_snapshot": "sources/housing-rental-regulation-2025/raw/2025-07-16.html",
+      "related_rule_ids": [],
+      "related_source_ids": [],
+      "retrieval_state": "AVAILABLE",
+      "schema_version": "2.0",
+      "source_id": "housing-rental-regulation-2025",
+      "source_type": "行政法规",
+      "title": "住房租赁条例（中华人民共和国国务院令第812号）",
+      "verification_method": "官方转载页面抓取 + 条文定位 + 字节与规范文本摘要比对（转载页，页内标注来源为中国政府网）",
+      "verification_state": "VERIFIED",
+      "verified_at": "2026-10-11T15:17:00+00:00",
+      "verifier_ref": "reviews.json#SRC-CHK-HOUSING-2025-001",
+      "version": "2025-07-16",
+      "warnings": []
+    },
+    {
+      "applicability_note": "全国适用；施行日期依第一千二百六十条。涉及施行前发生的事实，不能当然适用本法的具体规则。",
+      "articles": [
+        {
+          "canonical_sha256": "9422db9e7525de1a986aad18f1d8a538f4690dbb449240f8ae9623c1d237133e",
+          "canonical_text": "承租人未按照约定的方法或者未根据租赁物的性质使用租赁物，致使租赁物受到损失的，出租人可以解除合同并请求赔偿损失。",
+          "provision_locator": "条=第七百一十一条"
+        },
+        {
+          "canonical_sha256": "2d85f9ad6c5f5bf16ca71fddd39436871773d1e913adce461da2934f2bb8972c",
+          "canonical_text": "承租人应当妥善保管租赁物，因保管不善造成租赁物毁损、灭失的，应当承担赔偿责任。",
+          "provision_locator": "条=第七百一十四条"
+        },
+        {
+          "canonical_sha256": "a693760635a535e9de7f97012e1700310ac2e0b69bafae3cfb6e8b63e0218077",
+          "canonical_text": "承租人按照约定的方法或者根据租赁物的性质使用租赁物，致使租赁物受到损耗的，不承担赔偿责任。",
+          "provision_locator": "条=第七百一十条"
+        }
+      ],
+      "canonical_sha256": "3771d9ff20b0a3ac326503fd0fdad650bf81ca9381a1d00f961297aa63edbdfe",
+      "effect_state": "IN_FORCE",
+      "effective_from": "2021-01-01",
+      "effective_to": null,
+      "issuer": "全国人民代表大会",
+      "jurisdiction": "中国大陆",
+      "official_url": "https://www.gjxfj.gov.cn/2020-05/28/c_139952976.htm",
+      "promulgated_on": "2020-05-28",
+      "provision_locator": "条、款、项级定位见 articles",
+      "raw_origin": "reused-snapshot",
+      "raw_sha256": "010dd34c7ad72de68a10b35af3ee0b30458e3131d3cae028404b7c65ef914ac3",
+      "raw_snapshot": "sources/prc-civil-code-2020/raw/2020-05-28.html",
+      "related_rule_ids": [],
+      "related_source_ids": [],
+      "retrieval_state": "AVAILABLE",
+      "schema_version": "2.0",
+      "source_id": "prc-civil-code-2020",
+      "source_type": "法律",
+      "title": "中华人民共和国民法典",
+      "verification_method": "官方入口页面抓取 + 条文定位 + 字节与规范文本摘要比对",
+      "verification_state": "VERIFIED",
+      "verified_at": "2026-10-11T15:17:00+00:00",
+      "verifier_ref": "reviews.json#SRC-CHK-CIVIL-2020-001",
+      "version": "2020-05-28",
+      "warnings": []
+    }
+  ]
+}

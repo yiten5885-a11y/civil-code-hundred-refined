@@ -1,0 +1,31 @@
+{
+  "articles": {
+    "第七百一十一条": {
+      "canonical_sha256": "9422db9e7525de1a986aad18f1d8a538f4690dbb449240f8ae9623c1d237133e",
+      "canonical_text": "承租人未按照约定的方法或者未根据租赁物的性质使用租赁物，致使租赁物受到损失的，出租人可以解除合同并请求赔偿损失。",
+      "provision_locator": "条=第七百一十一条"
+    },
+    "第七百一十四条": {
+      "canonical_sha256": "2d85f9ad6c5f5bf16ca71fddd39436871773d1e913adce461da2934f2bb8972c",
+      "canonical_text": "承租人应当妥善保管租赁物，因保管不善造成租赁物毁损、灭失的，应当承担赔偿责任。",
+      "provision_locator": "条=第七百一十四条"
+    },
+    "第七百一十条": {
+      "canonical_sha256": "a693760635a535e9de7f97012e1700310ac2e0b69bafae3cfb6e8b63e0218077",
+      "canonical_text": "承租人按照约定的方法或者根据租赁物的性质使用租赁物，致使租赁物受到损耗的，不承担赔偿责任。",
+      "provision_locator": "条=第七百一十条"
+    }
+  },
+  "issuer": "全国人民代表大会",
+  "official_url": "https://www.gjxfj.gov.cn/2020-05/28/c_139952976.htm",
+  "raw_origin": "reused-snapshot",
+  "raw_sha256": "010dd34c7ad72de68a10b35af3ee0b30458e3131d3cae028404b7c65ef914ac3",
+  "raw_size_bytes": 403909,
+  "raw_snapshot": "sources/prc-civil-code-2020/raw/2020-05-28.html",
+  "retrieved_at": "2026-10-11T15:17:00+00:00",
+  "source_id": "prc-civil-code-2020",
+  "source_type": "法律",
+  "title": "中华人民共和国民法典",
+  "version": "2020-05-28",
+  "warnings": []
+}

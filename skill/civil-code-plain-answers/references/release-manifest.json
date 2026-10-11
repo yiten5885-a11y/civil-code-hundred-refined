@@ -1,0 +1,148 @@
+{
+  "active_rule_versions": {
+    "EXC_STILL_LIVING": "1.0.0",
+    "PREM_DEPOSIT_DISPUTE": "1.0.0",
+    "PREM_RESIDENTIAL": "1.0.0",
+    "RENT01_NAV": "1.0.0",
+    "RENT02_NAV": "1.0.0",
+    "RENT03_NAV": "1.0.0",
+    "RENT_DRAFT01": "1.0.0",
+    "RENT_LIMIT_NOTE": "1.0.0",
+    "RENT_SCOPE_CHECK": "1.0.0",
+    "RENT_SOURCE01": "1.0.0"
+  },
+  "built_at": "2026-10-11T16:38:06+00:00",
+  "commit_id": "HEAD",
+  "disabled_capabilities": {
+    "LEGAL01": "未取得真实法律复核记录（PENDING_REVIEW）",
+    "LEGAL02": "未取得真实法律复核记录（PENDING_REVIEW）"
+  },
+  "disabled_rule_versions": {
+    "EXC_ART714_MISKEEPING": "1.0.0",
+    "RENT01_LEGAL": "1.0.0",
+    "RENT02_LEGAL": "1.0.0",
+    "RENT03_LEGAL": "1.0.0"
+  },
+  "enabled_capabilities": [
+    "NAV01",
+    "NAV02",
+    "NAV03",
+    "DRAFT01",
+    "SOURCE01",
+    "DIALOG01"
+  ],
+  "gate_run_id": null,
+  "host_compatibility": {
+    "unverified": [
+      "其他 Agent Skills 宿主"
+    ],
+    "verified": [
+      "workbuddy-desktop（macOS，Python 3.13）"
+    ]
+  },
+  "known_limits": [
+    "只覆盖中国大陆住宅租赁押金场景的材料核对与沟通草稿",
+    "不提供法律结论、金额与期限判断、胜诉预测、诉讼代理",
+    "法律解释能力（LEGAL01/LEGAL02）未开放",
+    "本机构建环境未能实际调用本地 Qwen，对话记录非真实模型运行",
+    "住房租赁条例来源为转载页，未取得中国政府网原始页面交叉比对"
+  ],
+  "model_profile": {
+    "degraded_path": "heuristic-no-model（非模型，仅按已核对模板路由）",
+    "expected": "本地 Ollama + Qwen（标识以本机实测为准）",
+    "observed_this_build": "本机 Ollama 0.40.2 在 127.0.0.1:11434 监听；唯一模型条目 qwen3.8-macmini:27b 为 remote 代理（remote_host=http://127.0.0.1:11435，size=234B，无本地权重），上游 11435 未监听，调用返回 HTTP 400 Bad Request；本机无可用权重，未取得真实模型输出"
+  },
+  "payload_files": [
+    {
+      "path": "SKILL.md",
+      "sha256": "8433a9ea2cb8f8a9a896405edf8140bc1001f616e33a06f51be4a294a9901956"
+    },
+    {
+      "path": "config/example.json",
+      "sha256": "d52c72ff2fc8d57abea5d9ea6e364c84dc5d92bece03ae593809f0459c6d19cd"
+    },
+    {
+      "path": "references/reviews.json",
+      "sha256": "5f73b36fc7384dd6d953ed53efb1d63de033091ae32503dbc2e2158b92b0a541"
+    },
+    {
+      "path": "references/rules.json",
+      "sha256": "446724d1971d0f2479df7ffd62f20b1b5fde3f7019446793cabe80f25fab40a7"
+    },
+    {
+      "path": "references/sources.json",
+      "sha256": "1ec4d9795c33a4f1cbe70417d9ae2801036de10e059746a6035d7092bc368a2b"
+    },
+    {
+      "path": "references/templates.json",
+      "sha256": "b708936ee77caed74cc973e04a9491ce4d64a7751242d9de318fb704bd5b2d01"
+    },
+    {
+      "path": "scripts/answer.py",
+      "sha256": "9da5e7accf2a223cc3dd5d1e3d033894dfe34ea744fc0983e9f11b33334b288a"
+    }
+  ],
+  "payload_sha256": "67b326698b7e3e8b9b73a491e0094a6922fe0b784f7b8f6085cb63edaed04334",
+  "previous_release": null,
+  "profile": "D1",
+  "release_id": "rel-20261011T163805Z",
+  "review_refs": [
+    "SRC-CHK-CIVIL-2020-001",
+    "SRC-CHK-HOUSING-2025-001",
+    "CNT-CHK-NAV-001",
+    "MDL-ASSIST-001"
+  ],
+  "revocation_version": 1,
+  "schema_version": "2.0",
+  "software_version": "0.2.0",
+  "source_versions": {
+    "housing-rental-regulation-2025": "2025-07-16",
+    "prc-civil-code-2020": "2020-05-28"
+  },
+  "template_versions": {
+    "T_ACT_COMPARE_PHOTOS": "1.0.0",
+    "T_ACT_FIND_CLAUSE": "1.0.0",
+    "T_CONTEXT_TOO_LARGE": "1.0.0",
+    "T_DRAFT_ASK_DEPOSIT_STATUS": "1.0.0",
+    "T_DRAFT_ASK_DETAIL": "1.0.0",
+    "T_DRAFT_ASK_RETURN_TIME": "1.0.0",
+    "T_DRAFT_CONFIRM_HANDOVER": "1.0.0",
+    "T_ERROR_TECH": "1.0.0",
+    "T_FACT_SUMMARY_OCCUPANCY": "1.0.0",
+    "T_LEGAL_710_PLAIN": "1.0.0",
+    "T_LEGAL_710_UNKNOWN_KEEPING": "1.0.0",
+    "T_LEGAL_711_CONDITIONAL": "1.0.0",
+    "T_LEGAL_711_PLAIN": "1.0.0",
+    "T_LEGAL_714_PLAIN": "1.0.0",
+    "T_LIMIT_CLAUSE_VALIDITY": "1.0.0",
+    "T_LIMIT_NO_IMAGE_CLAIM": "1.0.0",
+    "T_LIMIT_NO_LEGAL_CONCLUSION": "1.0.0",
+    "T_MODEL_TIMEOUT": "1.0.0",
+    "T_MODEL_UNAVAILABLE": "1.0.0",
+    "T_NAV_DEDUCTION_ITEMS": "1.0.0",
+    "T_NAV_DEPOSIT_START": "1.0.0",
+    "T_NAV_HANDOVER": "1.0.0",
+    "T_NAV_PREPARE_HANDOVER": "1.0.0",
+    "T_NO_CONCLUDE_WEAR": "1.0.0",
+    "T_OUT_OF_REGION": "1.0.0",
+    "T_OUT_OF_SCOPE_GENERIC": "1.0.0",
+    "T_PENDING_LEGAL": "1.0.0",
+    "T_Q_CONTRACT_CLAUSE": "1.0.0",
+    "T_Q_DAMAGE_CAUSE": "1.0.0",
+    "T_Q_HANDOVER_RECORD": "1.0.0",
+    "T_Q_ITEM_DETAIL": "1.0.0",
+    "T_Q_ITEM_DETAIL_GENERIC": "1.0.0",
+    "T_Q_LANDLORD_REASON": "1.0.0",
+    "T_Q_MOVEIN_EVIDENCE": "1.0.0",
+    "T_Q_OCCUPANCY": "1.0.0",
+    "T_SAFETY_HISTORY": "1.0.0",
+    "T_SAFETY_NOW": "1.0.0",
+    "T_SCOPE_NONRESIDENTIAL_NAV": "1.0.0",
+    "T_SCOPE_SHIFT_NAV": "1.0.0",
+    "T_SCOPE_TIME_NOTE": "1.0.0",
+    "T_SOURCE_CIVIL_710": "1.0.0",
+    "T_SOURCE_CIVIL_711": "1.0.0",
+    "T_SOURCE_HOUSING_10": "1.0.0",
+    "T_UNKNOWN_CONFLICT": "1.0.0"
+  }
+}

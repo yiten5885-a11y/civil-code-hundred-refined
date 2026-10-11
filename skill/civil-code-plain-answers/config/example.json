@@ -1,0 +1,19 @@
+{
+  "schema_version": "2.0",
+  "model_backend": "auto",
+  "ollama": {
+    "host": "http://127.0.0.1:11434",
+    "model": "qwen3.8-macmini:27b",
+    "connect_timeout_s": 3,
+    "read_timeout_s": 60,
+    "temperature": 0.1,
+    "_note": "model 为 P0 实测到的本机标识（remote_model=qwen3.8:27b，remote_host=127.0.0.1:11435）。该标识存在不代表权重可在本机执行；请以实际 preflight 结果为准。"
+  },
+  "limits": {
+    "total_deadline_s": 120,
+    "max_repair": 1,
+    "max_questions": 2
+  },
+  "release_profile": "D1",
+  "_说明": "复制为 config/local.json 后按本机情况修改；local.json 不进入公开包。"
+}

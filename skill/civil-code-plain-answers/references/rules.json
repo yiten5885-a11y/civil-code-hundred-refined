@@ -1,0 +1,696 @@
+{
+  "note": "规则卡唯一数据源。semantic_sha256 由 tools/build_release.py 计算后回填。card_kind 为 LEGAL 的规则默认 DISABLED，只有真实法律复核通过后才可改为 ACTIVE。",
+  "rules": [
+    {
+      "allowed_template_ids": [
+        "T_NAV_DEPOSIT_START",
+        "T_ACT_FIND_CLAUSE",
+        "T_Q_OCCUPANCY",
+        "T_Q_LANDLORD_REASON"
+      ],
+      "capability_ids": [
+        "NAV01"
+      ],
+      "card_kind": "NAVIGATION",
+      "conflict_policy": "NAVIGATION_ONLY",
+      "dependencies": [],
+      "fact_question_map": {},
+      "lifecycle_state": "ACTIVE",
+      "predicates": null,
+      "prohibited_inferences": [
+        "交钥匙即必然立即退款",
+        "全国统一的押金退还天数",
+        "任意扣款约定都有效"
+      ],
+      "required_facts": [],
+      "review_refs": [],
+      "rule_id": "RENT01_NAV",
+      "scenario_id": "rent_deposit",
+      "scope_predicates": null,
+      "semantic_sha256": "d99c64e90c26f49a6f78d20f2b78ee5bacedcdb3f635538666733154a7f26309",
+      "source_refs": [],
+      "test_case_ids": [
+        "T01",
+        "T02",
+        "T10",
+        "T11"
+      ],
+      "title": "押金条款定位与核对清单",
+      "unknown_policy": "ASK",
+      "version": "1.0.0"
+    },
+    {
+      "allowed_template_ids": [
+        "T_FACT_SUMMARY_OCCUPANCY",
+        "T_NAV_HANDOVER",
+        "T_NAV_PREPARE_HANDOVER",
+        "T_Q_OCCUPANCY",
+        "T_Q_HANDOVER_RECORD",
+        "T_Q_MOVEIN_EVIDENCE"
+      ],
+      "capability_ids": [
+        "NAV02"
+      ],
+      "card_kind": "NAVIGATION",
+      "conflict_policy": "NAVIGATION_ONLY",
+      "dependencies": [
+        {
+          "alternative_template_refs": [
+            "T_NAV_PREPARE_HANDOVER"
+          ],
+          "block_template_ids": [
+            "T_NAV_HANDOVER",
+            "T_Q_HANDOVER_RECORD"
+          ],
+          "relation": "EXCEPTION",
+          "required": true,
+          "rule_ref": {
+            "id": "EXC_STILL_LIVING",
+            "version": "1.0.0"
+          },
+          "unknown_template_refs": [
+            "T_Q_OCCUPANCY"
+          ]
+        }
+      ],
+      "fact_question_map": {},
+      "lifecycle_state": "ACTIVE",
+      "predicates": null,
+      "prohibited_inferences": [
+        "搬离即等于已交钥匙",
+        "交钥匙即等于已签交接记录",
+        "有交接记录即等于无争议"
+      ],
+      "required_facts": [],
+      "review_refs": [],
+      "rule_id": "RENT02_NAV",
+      "scenario_id": "rent_deposit",
+      "scope_predicates": null,
+      "semantic_sha256": "8846be62fe3baee2f70123cea7684df60d2b6688b93d40f0731eb723a70bfddb",
+      "source_refs": [],
+      "test_case_ids": [
+        "T02",
+        "T03",
+        "T04",
+        "T05",
+        "T20"
+      ],
+      "title": "退房与交接事实整理",
+      "unknown_policy": "ASK",
+      "version": "1.0.0"
+    },
+    {
+      "allowed_template_ids": [
+        "T_NAV_DEDUCTION_ITEMS",
+        "T_Q_ITEM_DETAIL",
+        "T_Q_ITEM_DETAIL_GENERIC",
+        "T_Q_DAMAGE_CAUSE",
+        "T_ACT_COMPARE_PHOTOS",
+        "T_LIMIT_NO_IMAGE_CLAIM"
+      ],
+      "capability_ids": [
+        "NAV03"
+      ],
+      "card_kind": "NAVIGATION",
+      "conflict_policy": "NAVIGATION_ONLY",
+      "dependencies": [
+        {
+          "alternative_template_refs": [],
+          "block_template_ids": [],
+          "relation": "PREMISE",
+          "required": true,
+          "rule_ref": {
+            "id": "PREM_DEPOSIT_DISPUTE",
+            "version": "1.0.0"
+          },
+          "unknown_template_refs": []
+        }
+      ],
+      "fact_question_map": {},
+      "lifecycle_state": "ACTIVE",
+      "predicates": null,
+      "prohibited_inferences": [
+        "有损坏即可任意扣钱",
+        "没有发票就必然不能主张",
+        "全部押金等于维修损失"
+      ],
+      "required_facts": [],
+      "review_refs": [],
+      "rule_id": "RENT03_NAV",
+      "scenario_id": "rent_deposit",
+      "scope_predicates": null,
+      "semantic_sha256": "edfeafd6e3fe73d8e3ddac2b20759e7766d40203775607ea786c4f498b20b44b",
+      "source_refs": [],
+      "test_case_ids": [
+        "T02",
+        "T06",
+        "T10",
+        "T25"
+      ],
+      "title": "扣款项目与争议材料对应",
+      "unknown_policy": "ASK",
+      "version": "1.0.0"
+    },
+    {
+      "allowed_template_ids": [
+        "T_DRAFT_ASK_DETAIL",
+        "T_DRAFT_ASK_RETURN_TIME",
+        "T_DRAFT_CONFIRM_HANDOVER",
+        "T_DRAFT_ASK_DEPOSIT_STATUS"
+      ],
+      "capability_ids": [
+        "DRAFT01"
+      ],
+      "card_kind": "NAVIGATION",
+      "conflict_policy": "NAVIGATION_ONLY",
+      "dependencies": [],
+      "fact_question_map": {},
+      "lifecycle_state": "ACTIVE",
+      "predicates": {
+        "of": [
+          {
+            "op": "equals",
+            "signal": "asks_draft",
+            "value": true
+          },
+          {
+            "fact": "landlord_reason",
+            "op": "exists"
+          },
+          {
+            "fact": "claimed_amount",
+            "op": "exists"
+          }
+        ],
+        "op": "any"
+      },
+      "prohibited_inferences": [
+        "草稿中出现法定期限",
+        "草稿中出现未经支持的金额",
+        "草稿代替用户发送"
+      ],
+      "required_facts": [],
+      "review_refs": [],
+      "rule_id": "RENT_DRAFT01",
+      "scenario_id": "rent_deposit",
+      "scope_predicates": null,
+      "semantic_sha256": "6a39bbed467b677aa0efe4404c134d629bf8ebf0418aeb73a2a95ea280c5e80e",
+      "source_refs": [],
+      "test_case_ids": [
+        "T11",
+        "T12"
+      ],
+      "title": "中性沟通草稿",
+      "unknown_policy": "NAVIGATION_ONLY",
+      "version": "1.0.0"
+    },
+    {
+      "allowed_template_ids": [
+        "T_SOURCE_CIVIL_710",
+        "T_SOURCE_CIVIL_711",
+        "T_SOURCE_HOUSING_10",
+        "T_SCOPE_TIME_NOTE"
+      ],
+      "capability_ids": [
+        "SOURCE01"
+      ],
+      "card_kind": "NAVIGATION",
+      "conflict_policy": "NAVIGATION_ONLY",
+      "dependencies": [],
+      "fact_question_map": {},
+      "lifecycle_state": "ACTIVE",
+      "predicates": {
+        "of": [
+          {
+            "op": "equals",
+            "signal": "asks_source",
+            "value": true
+          },
+          {
+            "fact": "claimed_amount",
+            "op": "exists"
+          },
+          {
+            "fact": "landlord_reason",
+            "op": "exists"
+          }
+        ],
+        "op": "any"
+      },
+      "prohibited_inferences": [
+        "查到原文即等于专业审核通过",
+        "引用条号即等于适用于本案",
+        "从条例推出全国统一退款天数"
+      ],
+      "required_facts": [],
+      "review_refs": [],
+      "rule_id": "RENT_SOURCE01",
+      "scenario_id": "rent_deposit",
+      "scope_predicates": null,
+      "semantic_sha256": "1c4cea90a503518525d2a2c296b5013c5e96238bdec0ca57d223af0b5725bbd3",
+      "source_refs": [
+        {
+          "hash_kind": "CANONICAL_TEXT",
+          "id": "prc-civil-code-2020",
+          "provision_locator": "条=第七百一十条",
+          "sha256": "a693760635a535e9de7f97012e1700310ac2e0b69bafae3cfb6e8b63e0218077",
+          "version": "2020-05-28"
+        },
+        {
+          "hash_kind": "CANONICAL_TEXT",
+          "id": "prc-civil-code-2020",
+          "provision_locator": "条=第七百一十一条",
+          "sha256": "9422db9e7525de1a986aad18f1d8a538f4690dbb449240f8ae9623c1d237133e",
+          "version": "2020-05-28"
+        },
+        {
+          "hash_kind": "CANONICAL_TEXT",
+          "id": "housing-rental-regulation-2025",
+          "provision_locator": "条=第十条",
+          "sha256": "79ea1248fb57f9fba1e1596dc000d0f6a33cc2eac5564739e6881d3857e75c8a",
+          "version": "2025-07-16"
+        }
+      ],
+      "test_case_ids": [
+        "T13",
+        "T14",
+        "T23",
+        "T24"
+      ],
+      "title": "官方资料定位（只给原文与出处，不作解释）",
+      "unknown_policy": "QUALIFIED_GENERAL_INFO",
+      "version": "1.0.0"
+    },
+    {
+      "allowed_template_ids": [
+        "T_SCOPE_NONRESIDENTIAL_NAV",
+        "T_SCOPE_SHIFT_NAV"
+      ],
+      "capability_ids": [
+        "NAV01"
+      ],
+      "card_kind": "NAVIGATION",
+      "conflict_policy": "NAVIGATION_ONLY",
+      "dependencies": [],
+      "fact_question_map": {},
+      "lifecycle_state": "ACTIVE",
+      "predicates": null,
+      "prohibited_inferences": [
+        "住宅专门规则自动适用于商铺",
+        "提前退租即等于违约金额已确定"
+      ],
+      "required_facts": [],
+      "review_refs": [],
+      "rule_id": "RENT_SCOPE_CHECK",
+      "scenario_id": "rent_deposit",
+      "scope_predicates": null,
+      "semantic_sha256": "067655ec2ae9d409743ac9d12a7bec5d691e55ce59285179888e686ee9b377c4",
+      "source_refs": [],
+      "test_case_ids": [
+        "T08"
+      ],
+      "title": "范围变化提示（非住宅、提前退租、转租）",
+      "unknown_policy": "NAVIGATION_ONLY",
+      "version": "1.0.0"
+    },
+    {
+      "allowed_template_ids": [
+        "T_UNKNOWN_CONFLICT",
+        "T_NO_CONCLUDE_WEAR",
+        "T_LIMIT_CLAUSE_VALIDITY",
+        "T_PENDING_LEGAL",
+        "T_LIMIT_NO_LEGAL_CONCLUSION",
+        "T_OUT_OF_REGION",
+        "T_SAFETY_HISTORY"
+      ],
+      "capability_ids": [
+        "NAV01"
+      ],
+      "card_kind": "NAVIGATION",
+      "conflict_policy": "NAVIGATION_ONLY",
+      "dependencies": [],
+      "fact_question_map": {},
+      "lifecycle_state": "ACTIVE",
+      "predicates": null,
+      "prohibited_inferences": [
+        "用笼统同意覆盖具体结论",
+        "以估算区间代替无依据数字"
+      ],
+      "required_facts": [],
+      "review_refs": [],
+      "rule_id": "RENT_LIMIT_NOTE",
+      "scenario_id": "rent_deposit",
+      "scope_predicates": null,
+      "semantic_sha256": "d38d875b5900bcc5f543a1edb3ae108031c3f156c06475d7328139e38ef14cfa",
+      "source_refs": [],
+      "test_case_ids": [
+        "T07",
+        "T09",
+        "T12",
+        "T21"
+      ],
+      "title": "限制说明与结论类问题的收窄",
+      "unknown_policy": "QUALIFIED_GENERAL_INFO",
+      "version": "1.0.0"
+    },
+    {
+      "allowed_template_ids": [],
+      "capability_ids": [],
+      "card_kind": "NAVIGATION",
+      "conflict_policy": "NAVIGATION_ONLY",
+      "dependencies": [],
+      "fact_question_map": {},
+      "lifecycle_state": "ACTIVE",
+      "predicates": {
+        "fact": "occupancy_still_living",
+        "op": "equals",
+        "value": true
+      },
+      "prohibited_inferences": [
+        "未搬离即等于已完成交接"
+      ],
+      "required_facts": [
+        "occupancy_still_living"
+      ],
+      "review_refs": [],
+      "rule_id": "EXC_STILL_LIVING",
+      "scenario_id": "rent_deposit",
+      "scope_predicates": null,
+      "semantic_sha256": "0cfc33ea1b527bdca0c927f1790518e401bcb21ddb98212b1dd645f9b2167d8f",
+      "source_refs": [],
+      "test_case_ids": [
+        "T03",
+        "T04"
+      ],
+      "title": "例外：承租人仍居住在房屋内",
+      "unknown_policy": "ASK",
+      "version": "1.0.0"
+    },
+    {
+      "allowed_template_ids": [],
+      "capability_ids": [],
+      "card_kind": "NAVIGATION",
+      "conflict_policy": "NAVIGATION_ONLY",
+      "dependencies": [],
+      "fact_question_map": {},
+      "lifecycle_state": "ACTIVE",
+      "predicates": {
+        "of": [
+          {
+            "fact": "landlord_reason",
+            "op": "exists"
+          },
+          {
+            "fact": "claimed_amount",
+            "op": "exists"
+          },
+          {
+            "fact": "deduction_items",
+            "op": "exists"
+          }
+        ],
+        "op": "any"
+      },
+      "prohibited_inferences": [
+        "未提出扣款主张即推定存在扣款争议"
+      ],
+      "required_facts": [],
+      "review_refs": [],
+      "rule_id": "PREM_DEPOSIT_DISPUTE",
+      "scenario_id": "rent_deposit",
+      "scope_predicates": null,
+      "semantic_sha256": "ae05f64364ec281cb6550f5b8e22663235d033823c494171da6d0ff4eb55b82c",
+      "source_refs": [],
+      "test_case_ids": [
+        "T01",
+        "T02"
+      ],
+      "title": "前提：已存在具体的扣款主张",
+      "unknown_policy": "ASK",
+      "version": "1.0.0"
+    },
+    {
+      "allowed_template_ids": [
+        "T_LEGAL_710_PLAIN"
+      ],
+      "blocking_reason": "未取得真实法律复核记录（PENDING_REVIEW）",
+      "capability_ids": [
+        "LEGAL01"
+      ],
+      "card_kind": "LEGAL",
+      "conflict_policy": "NAVIGATION_ONLY",
+      "dependencies": [
+        {
+          "alternative_template_refs": [
+            "T_SCOPE_NONRESIDENTIAL_NAV"
+          ],
+          "block_template_ids": [],
+          "relation": "PREMISE",
+          "required": true,
+          "rule_ref": {
+            "id": "PREM_RESIDENTIAL",
+            "version": "1.0.0"
+          },
+          "unknown_template_refs": []
+        }
+      ],
+      "fact_question_map": {},
+      "lifecycle_state": "DISABLED",
+      "predicates": null,
+      "prohibited_inferences": [
+        "交钥匙即必然立即退款",
+        "全国统一退款天数",
+        "任意扣款约定都有效"
+      ],
+      "required_facts": [],
+      "review_refs": [],
+      "rule_id": "RENT01_LEGAL",
+      "scenario_id": "rent_deposit",
+      "scope_predicates": null,
+      "semantic_sha256": "39dc32fb3818b94e062ea9b4bd3c5b188f4678b15cdb49dcb3a8483203230482",
+      "source_refs": [
+        {
+          "hash_kind": "CANONICAL_TEXT",
+          "id": "prc-civil-code-2020",
+          "provision_locator": "条=第七百一十条",
+          "sha256": "a693760635a535e9de7f97012e1700310ac2e0b69bafae3cfb6e8b63e0218077",
+          "version": "2020-05-28"
+        }
+      ],
+      "test_case_ids": [
+        "T15",
+        "T21"
+      ],
+      "title": "押金返还义务的一般规则白话解释（未开放）",
+      "unknown_policy": "UNAVAILABLE",
+      "version": "1.0.0"
+    },
+    {
+      "allowed_template_ids": [
+        "T_LEGAL_710_PLAIN",
+        "T_LEGAL_710_UNKNOWN_KEEPING",
+        "T_LEGAL_714_PLAIN"
+      ],
+      "blocking_reason": "未取得真实法律复核记录（PENDING_REVIEW）",
+      "capability_ids": [
+        "LEGAL01"
+      ],
+      "card_kind": "LEGAL",
+      "conflict_policy": "NAVIGATION_ONLY",
+      "dependencies": [
+        {
+          "alternative_template_refs": [
+            "T_LEGAL_714_PLAIN"
+          ],
+          "block_template_ids": [
+            "T_LEGAL_710_PLAIN"
+          ],
+          "relation": "EXCEPTION",
+          "required": true,
+          "rule_ref": {
+            "id": "EXC_ART714_MISKEEPING",
+            "version": "1.0.0"
+          },
+          "unknown_template_refs": [
+            "T_LEGAL_710_UNKNOWN_KEEPING"
+          ]
+        },
+        {
+          "alternative_template_refs": [],
+          "block_template_ids": [],
+          "relation": "COMPANION",
+          "required": false,
+          "rule_ref": {
+            "id": "RENT01_NAV",
+            "version": "1.0.0"
+          },
+          "unknown_template_refs": []
+        }
+      ],
+      "fact_question_map": {},
+      "lifecycle_state": "DISABLED",
+      "predicates": null,
+      "prohibited_inferences": [
+        "所有墙印都是正常损耗",
+        "一张照片即可决定争议",
+        "有印子即可认定属于第711条情形"
+      ],
+      "required_facts": [],
+      "review_refs": [],
+      "rule_id": "RENT02_LEGAL",
+      "scenario_id": "rent_deposit",
+      "scope_predicates": null,
+      "semantic_sha256": "f964f2a5882ec14b497e18f676dadf730afd92386e54816c72a57a877a82524c",
+      "source_refs": [
+        {
+          "hash_kind": "CANONICAL_TEXT",
+          "id": "prc-civil-code-2020",
+          "provision_locator": "条=第七百一十条",
+          "sha256": "a693760635a535e9de7f97012e1700310ac2e0b69bafae3cfb6e8b63e0218077",
+          "version": "2020-05-28"
+        },
+        {
+          "hash_kind": "CANONICAL_TEXT",
+          "id": "prc-civil-code-2020",
+          "provision_locator": "条=第七百一十四条",
+          "sha256": "2d85f9ad6c5f5bf16ca71fddd39436871773d1e913adce461da2934f2bb8972c",
+          "version": "2020-05-28"
+        }
+      ],
+      "test_case_ids": [
+        "T09",
+        "T15"
+      ],
+      "title": "使用痕迹与损耗的白话解释（未开放）",
+      "unknown_policy": "UNAVAILABLE",
+      "version": "1.0.0"
+    },
+    {
+      "allowed_template_ids": [
+        "T_LEGAL_711_PLAIN",
+        "T_LEGAL_711_CONDITIONAL"
+      ],
+      "blocking_reason": "未取得真实法律复核记录（PENDING_REVIEW）",
+      "capability_ids": [
+        "LEGAL02"
+      ],
+      "card_kind": "LEGAL",
+      "conflict_policy": "NAVIGATION_ONLY",
+      "dependencies": [],
+      "fact_question_map": {},
+      "lifecycle_state": "DISABLED",
+      "predicates": null,
+      "prohibited_inferences": [
+        "有损坏即可任意扣钱",
+        "没有发票就必然不能主张",
+        "全部押金等于维修损失",
+        "第711条覆盖所有损坏类型"
+      ],
+      "required_facts": [],
+      "review_refs": [],
+      "rule_id": "RENT03_LEGAL",
+      "scenario_id": "rent_deposit",
+      "scope_predicates": null,
+      "semantic_sha256": "1a42482de4fbbe7cfa02fe67efba7fc11d43da688dee05470d42ecbc3b6a1c8e",
+      "source_refs": [
+        {
+          "hash_kind": "CANONICAL_TEXT",
+          "id": "prc-civil-code-2020",
+          "provision_locator": "条=第七百一十一条",
+          "sha256": "9422db9e7525de1a986aad18f1d8a538f4690dbb449240f8ae9623c1d237133e",
+          "version": "2020-05-28"
+        }
+      ],
+      "test_case_ids": [
+        "T15"
+      ],
+      "title": "使用方式与损坏争议的条件式说明（未开放）",
+      "unknown_policy": "UNAVAILABLE",
+      "version": "1.0.0"
+    },
+    {
+      "allowed_template_ids": [],
+      "capability_ids": [],
+      "card_kind": "NAVIGATION",
+      "conflict_policy": "NAVIGATION_ONLY",
+      "dependencies": [],
+      "fact_question_map": {},
+      "lifecycle_state": "ACTIVE",
+      "predicates": {
+        "of": [
+          {
+            "of": {
+              "fact": "commercial_use",
+              "op": "exists"
+            },
+            "op": "not"
+          },
+          {
+            "fact": "commercial_use",
+            "op": "equals",
+            "value": false
+          }
+        ],
+        "op": "any"
+      },
+      "prohibited_inferences": [
+        "非住宅租赁套用住宅专门规则"
+      ],
+      "required_facts": [],
+      "review_refs": [],
+      "rule_id": "PREM_RESIDENTIAL",
+      "scenario_id": "rent_deposit",
+      "scope_predicates": null,
+      "semantic_sha256": "0f5462c08ec1a5ca1d0fa7c7a1288824dc959013b9b4304c202db96db1afc7fa",
+      "source_refs": [],
+      "test_case_ids": [
+        "T08"
+      ],
+      "title": "前提：住宅租赁（未确认为非住宅）",
+      "unknown_policy": "ASK",
+      "version": "1.0.0"
+    },
+    {
+      "allowed_template_ids": [],
+      "blocking_reason": "未取得真实法律复核记录（PENDING_REVIEW）",
+      "capability_ids": [],
+      "card_kind": "LEGAL",
+      "conflict_policy": "NAVIGATION_ONLY",
+      "dependencies": [],
+      "fact_question_map": {},
+      "lifecycle_state": "DISABLED",
+      "predicates": {
+        "fact": "damage_due_to_miskeeping",
+        "op": "equals",
+        "value": true
+      },
+      "prohibited_inferences": [
+        "损耗与保管不善不作区分"
+      ],
+      "required_facts": [
+        "damage_due_to_miskeeping"
+      ],
+      "review_refs": [],
+      "rule_id": "EXC_ART714_MISKEEPING",
+      "scenario_id": "rent_deposit",
+      "scope_predicates": null,
+      "semantic_sha256": "f08ff8ef89fb84261bab11290007cc39590e8cf922a909e64a1d2da3e7920733",
+      "source_refs": [
+        {
+          "hash_kind": "CANONICAL_TEXT",
+          "id": "prc-civil-code-2020",
+          "provision_locator": "条=第七百一十四条",
+          "sha256": "2d85f9ad6c5f5bf16ca71fddd39436871773d1e913adce461da2934f2bb8972c",
+          "version": "2020-05-28"
+        }
+      ],
+      "test_case_ids": [
+        "T15"
+      ],
+      "title": "例外：保管不善造成的毁损（第714条分支，未开放）",
+      "unknown_policy": "UNAVAILABLE",
+      "version": "1.0.0"
+    }
+  ],
+  "schema_version": "2.0"
+}

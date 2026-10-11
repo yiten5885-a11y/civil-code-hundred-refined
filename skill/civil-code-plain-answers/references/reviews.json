@@ -1,0 +1,96 @@
+{
+  "note": "审核记录。subject_sha256 由 tools/build_release.py 依据实际计算出的语义摘要回填。LEGAL_REVIEW 只能由真实人员承担；本项目当前没有任何 LEGAL_REVIEW 记录，因此法律表达能力保持停用。",
+  "pending": [
+    {
+      "blocking_reason": "需要真实法律专业人员对白话、前提、例外、反例与禁推结论逐条复核；当前复核人未到位",
+      "blocking_since": "2026-10-11",
+      "impact": "LEGAL01、LEGAL02 保持停用，本包按 D1（公开材料导航）范围发布",
+      "review_type": "LEGAL_REVIEW",
+      "subject_ids": [
+        "RENT01_LEGAL",
+        "RENT02_LEGAL",
+        "RENT03_LEGAL",
+        "EXC_ART714_MISKEEPING"
+      ]
+    }
+  ],
+  "reviews": [
+    {
+      "credential_evidence_ref": null,
+      "decision": "PASS",
+      "dependency_refs": [],
+      "notes": "已核对：页面标题《中华人民共和国民法典》，发布主体全国人民代表大会，通过日期 2020-05-28，第一千二百六十条载明自 2021-01-01 起施行。第七百一十、七百一十一、七百一十四条原文与规范文本一致，未删除否定词、但书或款项。未核对事项：未与全国人大或国家法律法规数据库的另一独立入口做交叉比对；法律效力状态按页面与施行日期记录为 IN_FORCE，未做后续修订追踪。",
+      "patch_ref": null,
+      "review_id": "SRC-CHK-CIVIL-2020-001",
+      "review_type": "SOURCE_CHECK",
+      "reviewed_at": "2026-10-11T15:17:00+00:00",
+      "reviewer_ref": "executor:workbuddy-p0",
+      "reviewer_role": "development-executor（来源检索与核对，非法律专业复核）",
+      "scope": "确认官方入口可访问、原始快照字节摘要、条文定位与规范文本、公布与施行信息、发布主体",
+      "source_refs": [],
+      "subject_hash_kind": "FILE_BYTES",
+      "subject_id": "prc-civil-code-2020",
+      "subject_sha256": "010dd34c7ad72de68a10b35af3ee0b30458e3131d3cae028404b7c65ef914ac3",
+      "subject_version": "2020-05-28",
+      "template_refs": []
+    },
+    {
+      "credential_evidence_ref": null,
+      "decision": "PASS",
+      "dependency_refs": [],
+      "notes": "已核对：标题载明《住房租赁条例》（中华人民共和国国务院令第812号），2025-06-27 国务院第62次常务会议通过，2025-07-16 公布，自 2025-09-15 起施行；第二条限定适用对象为城镇国有土地上住房租赁活动；第十条原文已抽取。局限：本次取得的是生态环境部网站转载页，页内标注来源为中国政府网，未取得中国政府网原始页面作交叉比对；效力与适用范围以条文原文为准，未做司法或行政解释层面的核对。",
+      "patch_ref": null,
+      "review_id": "SRC-CHK-HOUSING-2025-001",
+      "review_type": "SOURCE_CHECK",
+      "reviewed_at": "2026-10-11T15:17:00+00:00",
+      "reviewer_ref": "executor:workbuddy-p0",
+      "reviewer_role": "development-executor（来源检索与核对，非法律专业复核）",
+      "scope": "确认官方转载入口、字节摘要、条二与条十原文、国务院令号、公布与施行日期、适用范围",
+      "source_refs": [],
+      "subject_hash_kind": "FILE_BYTES",
+      "subject_id": "housing-rental-regulation-2025",
+      "subject_sha256": "3ecc4398c399d8082d6a3488f2afbe49f69a68739b7d9d42b7820409d3f7cff7",
+      "subject_version": "2025-07-16",
+      "template_refs": []
+    },
+    {
+      "credential_evidence_ref": null,
+      "decision": "PASS",
+      "dependency_refs": [],
+      "notes": "逐条检查：导航类模板只指向合同原文、交接记录与材料清单，未出现「必须退还」「几日内」「可以全额扣」等结论；草稿模板不含法定期限与金额数字；来源定位模板只输出原文与出处，并附「只定位原文，不作解释」；限制说明明确列出未开放项。未覆盖：不具备法律专业能力，本记录不能替代 LEGAL_REVIEW。",
+      "patch_ref": null,
+      "review_id": "CNT-CHK-NAV-001",
+      "review_type": "CONTENT_CHECK",
+      "reviewed_at": "2026-10-11T15:40:00+00:00",
+      "reviewer_ref": "executor:workbuddy-p0",
+      "reviewer_role": "content-checker（AI 辅助，非法律专业）",
+      "scope": "检查材料导航、追问、中性草稿与限制说明是否暗含未经审核的法律结论、法定期限或金额",
+      "source_refs": [],
+      "subject_hash_kind": "SEMANTIC",
+      "subject_id": "navigation-template-set",
+      "subject_sha256": "b0c9d0f5aa3f1f2591ad72cdc6a6bceae51e665a6a545824a8114c5a912eed59",
+      "subject_version": "1.0.0",
+      "template_refs": []
+    },
+    {
+      "credential_evidence_ref": null,
+      "decision": "PASS",
+      "dependency_refs": [],
+      "notes": "本机 Qwen 不可执行（模型条目为 remote 代理，上游 127.0.0.1:11435 未监听，本地无权重），本轮没有任何模型生成文本进入规则、模板或审核记录。MODEL_ASSIST 不参与专业审核放行。",
+      "patch_ref": null,
+      "review_id": "MDL-ASSIST-001",
+      "review_type": "MODEL_ASSIST",
+      "reviewed_at": "2026-10-11T15:40:00+00:00",
+      "reviewer_ref": "none",
+      "reviewer_role": "model-assist（不参与放行）",
+      "scope": "记录本轮是否有模型生成内容进入可发布内容",
+      "source_refs": [],
+      "subject_hash_kind": "SEMANTIC",
+      "subject_id": "rent_deposit",
+      "subject_sha256": "",
+      "subject_version": "1.0.0",
+      "template_refs": []
+    }
+  ],
+  "schema_version": "2.0"
+}

@@ -1,40 +1,63 @@
-![民法典百炼白话问答封面：借贷、租房、婚姻财产；理清事实、查找法源、关键追问；工程内测](assets/cover.jpg)
+# Civil Code Plain Answers（民法典百炼白话问答）
 
-# Civil Code Plain Answers (engineering alpha)
+An open-source Agent Skill for everyday questions about **residential rental deposits in mainland China**. The user describes the situation in their own words and gets: what to check first, which contract sentences matter, which official provisions say what, and a neutral message they can edit and send themselves.
 
-An open-source Agent Skill prototype for everyday questions about personal loans, residential leases, and marital property in mainland China. Its current public release **organizes facts and points to official sources; it does not provide reviewed legal conclusions**. The planned twelve scenarios, local Qwen drafts, and three-turn examples have not passed professional legal review. No rule is enabled in `rules/approved/`.
+**Current public release: D1 — material navigation only.** The skill does **not** give legal conclusions. The legal-explanation capabilities (`LEGAL01` / `LEGAL02`) are **not enabled**, because no real legal-professional review record exists yet. The scope is one scenario (`rent_deposit`); this is not coverage of Chinese rental law, and it is not twelve scenarios.
 
-[中文说明](README.zh-CN.md) · [Development status](plan/TASKS.md) · [Release readiness](reports/PUBLISH_READINESS.md)
+[中文说明](README.zh-CN.md)
 
-## What is in the repository
+## What it does today
 
-- `skill/civil-code-plain-answers/`: the five-file public skill. Its Chinese instructions direct the host to use `scripts/answer.py` and show only the returned text when the status is not `ANSWER`.
-- `scripts/`: official-source fetching, article extraction and hash checks, local-only Qwen draft generation, candidate auditing, and packaging.
-- `sources/SOURCE_MANIFEST.json`: source locations and recorded hashes. Downloaded law pages and normalized full texts stay outside Git and outside both public skill ZIPs.
-- `tests/`: program checks and an 80-case inventory. The legal expected answers have not been approved; twenty cases are reserved for final acceptance.
-- `reports/`: inspectable engineering evidence and explicit remaining gates.
+| Capability | State | What it does |
+| --- | --- | --- |
+| NAV01–NAV03 | enabled | Locate the deposit clause; sort handover facts; map deduction items to evidence |
+| DRAFT01 | enabled | Neutral message draft; the user decides whether to send it |
+| SOURCE01 | enabled | Point to official provisions (text and locator only, no interpretation) |
+| DIALOG01 | enabled | Multi-turn correction; stale premises are retracted and re-evaluated |
+| LEGAL01 / LEGAL02 | **not enabled** | Needs real legal review; currently returns `PENDING_REVIEW` |
 
-The private Qwen candidates, reviewer notes, normalized law texts, and unsigned 80-case review worksheet are excluded from Git and the public skill. A separate local reviewer bundle can be built for authorized professional review.
+## Run it
 
-## Reproduce the engineering checks
-
-Python 3 standard library is sufficient for the program tests and packages. Fetching official pages additionally uses `curl` and a network connection. Local Qwen candidate generation is optional and requires your own loopback Ollama service; installing the public skill does not provide a model or free inference.
+Python 3 standard library only. Paths resolve relative to the module, so it runs from any working directory.
 
 ```sh
-python3 -m unittest discover -s tests -p 'test_*.py'
-python3 scripts/package.py
-python3 tests/smoke_package.py
-printf '%s\n' '{"question":"押金还没退，我该先看什么？","scenario":"rent_deposit"}' | python3 skill/civil-code-plain-answers/scripts/answer.py
+python3 skill/civil-code-plain-answers/scripts/answer.py --question "押金还没退，我该先看什么？"
+python3 skill/civil-code-plain-answers/tests/run_tests.py
 ```
 
-The sample answer currently returns `PENDING_REVIEW`. To rebuild local official-source indexes, run `source_pipeline.py fetch` and `build`, followed by the relevant companion normalization scripts and `check_source_hashes.py`. The [Chinese guide](README.zh-CN.md) lists the full commands and the local Qwen workflow. Hash checks establish file integrity, not current legal effect or correct interpretation.
+`stdout` is a single JSON envelope. The user-visible text is the `text` field and must be shown as-is (`render_contract.allow_host_append` is `false`). Exit codes: `0` normal (including a limited reply), `2` request or runtime failure, `3` output check failed. Exit code `0` is **not** evidence that an answer passed acceptance.
 
-## Host and release limits
+The model backend is optional. Copy `skill/civil-code-plain-answers/config/example.json` to `config/local.json` to point at a local Ollama. Without a usable local model the pipeline degrades to `heuristic-no-model` — a deterministic, template-only path that produces no free-form legal text — and reports `MODEL_UNAVAILABLE`. It never silently switches to a cloud model.
 
-The five-file skill was installed locally in WorkBuddy 5.7.7 and invoked on two synthetic questions. In one run the host added unreviewed conditional claims after the script returned `PENDING_REVIEW`. The skill instructions were tightened, but that host behavior has not yet been retested. A prompt-only skill cannot guarantee that a host will enforce the script's output boundary.
+## What it does not do
 
-The planned release gates remain open: source validity and applicability, professional review of every enabled rule and example, legal and factual acceptance of the 80 cases, a five-reader comprehension check, and a host-level end-to-end test. Only the scope that passes these gates may be described as providing legal explanations. The current alpha is limited to fact organization and source pointers.
+No win rates, no predicted outcomes, no refund amounts or deduction ratios, no nationwide refund deadlines, no limitation-period conclusions, no court-fee or jurisdiction conclusions, no filing on the user's behalf, and no sending messages to third parties. When asked for these, it keeps giving the material help it can actually support.
 
-## License and data
+## Layout
 
-The project's original code and documentation are MIT licensed. Third-party official law pages, publisher materials, and user consultations are not included under that license. Do not submit real identities, account numbers, or confidential case files to the public repository or issue tracker.
+- `skill/civil-code-plain-answers/` — the skill: `SKILL.md`, `LICENSE.txt`, `config/`, `references/` (rules, templates, sources, reviews, release manifest), `scripts/`, plus `sources/` (official snapshots), `tests/` and `tools/` used during development.
+- `scripts/`, `tests/`, `reports/`, `plan/`, `sources/SOURCE_MANIFEST.json` — the **earlier** wider-scope engineering effort (personal lending, residential leases, marital property; twelve planned scenarios). It is kept for history: nothing in it is enabled, its rules were never professionally reviewed, and it no longer drives the published skill.
+- `docs/法律专业复核交接.md` — handover note for legal-professional review.
+
+## Package
+
+```sh
+python3 scripts/package.py          # writes dist/ archives and dist/PACKAGE_MANIFEST.json
+python3 tests/smoke_package.py      # extracts the SkillHub ZIP and checks the contract
+```
+
+The SkillHub archive contains only the runtime subset; `tests/`, `tools/`, `sources/` and `evidence/` are excluded.
+
+## Status and gates
+
+`skill/civil-code-plain-answers/references/release-manifest.json` is the source of truth for what is enabled. Current honest status:
+
+- 33/33 program tests pass; 1 is not run (it needs a real local model).
+- No legal-professional review record exists, so `LEGAL01`/`LEGAL02` stay disabled.
+- The host's final displayed text has not been re-tested since the skill instructions were tightened.
+
+## License
+
+MIT for this project's own code and documentation (see `LICENSE` and `skill/civil-code-plain-answers/LICENSE.txt`). The official law texts referenced in `references/sources.json` come from public government pages and are used for citation and locating only; third-party commentary, publications and images are not distributed here and are not covered by the MIT grant.
+
+Do not put real identities, account numbers or confidential case files into this repository or its issue tracker.

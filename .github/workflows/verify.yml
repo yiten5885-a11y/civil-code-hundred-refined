@@ -1,4 +1,4 @@
-name: Verify alpha skill
+name: Verify skill packages
 
 on:
   push:
@@ -15,14 +15,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Program gate tests
+      - name: D1 program gate tests (rent_deposit)
+        run: python3 skill/civil-code-plain-answers/tests/run_tests.py
+      - name: Program gate tests (earlier 12-scenario material)
         run: python3 -m unittest discover -s tests -q
       - name: Check development case catalog and closed legal exit
         run: |
           python3 tests/build_case_catalog.py
           python3 tests/run_case_catalog.py
           git diff --exit-code -- tests/cases.jsonl reports/CASE_DEVELOPMENT_RUN.json
-      - name: Build isolated alpha package
+      - name: Build isolated D1 package
         run: python3 scripts/package.py
       - name: Check packaged behavior and excluded data
         run: python3 tests/smoke_package.py

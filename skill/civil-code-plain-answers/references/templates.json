@@ -1,0 +1,875 @@
+{
+  "note": "表达模板唯一数据源。semantic_sha256 与 source_refs.sha256 由 tools/build_release.py 计算后回填，不接受手工填写或模型提供。",
+  "schema_version": "2.0",
+  "templates": [
+    {
+      "kind": "ACTION",
+      "required_predicates": null,
+      "review_refs": [],
+      "semantic_sha256": "0dfe774f16b2e02802da162042c072d267dfcb79a943e892b442c5fd5d6d7789",
+      "slots": {},
+      "source_refs": [],
+      "template_id": "T_NAV_DEPOSIT_START",
+      "text": "先看合同里两处：一是押金什么时候退、怎么退；二是哪些情况可以扣钱、怎么算。把这两句找到，再和交接记录、房东的说法放在一起看，就能分清是卡在退还时间，还是卡在扣款争议。",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "ACTION",
+      "required_predicates": null,
+      "review_refs": [],
+      "semantic_sha256": "a74946f06399bc7729192e79e23003149d6e75be36e19f330d732148964a5135",
+      "slots": {},
+      "source_refs": [],
+      "template_id": "T_ACT_FIND_CLAUSE",
+      "text": "如果手上有合同，翻到写「押金」「保证金」的几条，把原文那几句发我（姓名、身份证号、门牌号可以遮掉）。暂时没有合同也没关系，我按你记得的内容帮你列核对清单。",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "QUESTION",
+      "required_predicates": {
+        "of": {
+          "of": [
+            {
+              "fact": "occupancy_still_living",
+              "op": "exists"
+            },
+            {
+              "fact": "occupancy_moved_out",
+              "op": "exists"
+            },
+            {
+              "fact": "keys_returned",
+              "op": "exists"
+            }
+          ],
+          "op": "any"
+        },
+        "op": "not"
+      },
+      "review_refs": [],
+      "semantic_sha256": "0680ae1ba47b37aa1540216d070f19bfc1b36a642b67c01bfd8c55d009fe957d",
+      "slots": {},
+      "source_refs": [],
+      "template_id": "T_Q_OCCUPANCY",
+      "text": "你现在是还住着、已经搬走，还是已经把钥匙交回去了？",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "QUESTION",
+      "required_predicates": {
+        "of": {
+          "fact": "landlord_reason",
+          "op": "exists"
+        },
+        "op": "not"
+      },
+      "review_refs": [],
+      "semantic_sha256": "23c2271c5037fe7e99a8a5c1d3278c2769d7775784ee0f834a88ee65aad54bda",
+      "slots": {},
+      "source_refs": [],
+      "template_id": "T_Q_LANDLORD_REASON",
+      "text": "房东说了不退或者扣钱的理由吗？有没有写具体项目和金额？",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "QUESTION",
+      "required_predicates": {
+        "of": {
+          "fact": "contract_text_available",
+          "op": "exists"
+        },
+        "op": "not"
+      },
+      "review_refs": [],
+      "semantic_sha256": "ff49c54f68f4eaa13adf61a6ea772bb32b91b2bd783450a0d8de856a63445f49",
+      "slots": {},
+      "source_refs": [],
+      "template_id": "T_Q_CONTRACT_CLAUSE",
+      "text": "合同里关于押金退还时间和扣减情形，原文是怎么写的？",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "FACT_SUMMARY",
+      "required_predicates": null,
+      "review_refs": [],
+      "semantic_sha256": "9004fbc9bda3642e6e72572e05295363e48bf8d21095477e3654b5ab16dbe8d7",
+      "slots": {
+        "occupancy_summary": {
+          "derivation": "occupancy_summary",
+          "required": true,
+          "source_kind": "derived",
+          "type": "text"
+        }
+      },
+      "source_refs": [],
+      "template_id": "T_FACT_SUMMARY_OCCUPANCY",
+      "text": "先记一下你目前说的情况：{occupancy_summary}。",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "ACTION",
+      "required_predicates": null,
+      "review_refs": [],
+      "semantic_sha256": "c52b0648138a64067eff3f8a4e6ef9e5053045cc4f4c05f563dc8bdc3ebaaeac",
+      "slots": {},
+      "source_refs": [],
+      "template_id": "T_NAV_HANDOVER",
+      "text": "把交接这一环单独记下来：搬离日期、钥匙有没有交回、有没有交接单或书面确认、当时的房间状态有没有照片或视频。这几项互相独立——搬走了不等于交了钥匙，交了钥匙也不等于签了交接记录。",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "ACTION",
+      "required_predicates": {
+        "fact": "occupancy_still_living",
+        "op": "equals",
+        "value": true
+      },
+      "review_refs": [],
+      "semantic_sha256": "fbeaa19d0f526a336982503ae61f867270d9edcd129a918075f0fb37c5fc1958",
+      "slots": {},
+      "source_refs": [],
+      "template_id": "T_NAV_PREPARE_HANDOVER",
+      "text": "你目前还没搬，先做准备：确认合同约定的交接时间和交接方式；搬之前把房间状态整体拍一遍（墙面、地面、家具、水电表）；交接时尽量留一份双方都看得到的书面记录。",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "QUESTION",
+      "required_predicates": {
+        "of": [
+          {
+            "fact": "occupancy_moved_out",
+            "op": "equals",
+            "value": true
+          },
+          {
+            "fact": "keys_returned",
+            "op": "equals",
+            "value": true
+          }
+        ],
+        "op": "any"
+      },
+      "review_refs": [],
+      "semantic_sha256": "d313b1c4f0eca1b8aa5c5a2c227adf9abdabdef81de452553073ca6cba4729c7",
+      "slots": {},
+      "source_refs": [],
+      "template_id": "T_Q_HANDOVER_RECORD",
+      "text": "退房时有交接单、验收记录，或者和房东的文字确认吗？",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "QUESTION",
+      "required_predicates": {
+        "of": {
+          "fact": "move_in_evidence",
+          "op": "exists"
+        },
+        "op": "not"
+      },
+      "review_refs": [],
+      "semantic_sha256": "7b14465faa1637da309ae07af89bbf58aedb4c1477e271cde578b7438190f023",
+      "slots": {},
+      "source_refs": [],
+      "template_id": "T_Q_MOVEIN_EVIDENCE",
+      "text": "入住时的照片或视频还在吗？有争议的那个位置，当时是什么状态？",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "ACTION",
+      "required_predicates": {
+        "of": [
+          {
+            "fact": "move_in_evidence",
+            "op": "equals",
+            "value": true
+          },
+          {
+            "fact": "move_out_evidence",
+            "op": "equals",
+            "value": true
+          }
+        ],
+        "op": "any"
+      },
+      "review_refs": [],
+      "semantic_sha256": "25bf21cdef02528a9a811f1e4ef2a6e4578c42706c584653c55663a17e33139c",
+      "slots": {},
+      "source_refs": [],
+      "template_id": "T_ACT_COMPARE_PHOTOS",
+      "text": "把入住时和退房时的材料按位置一一对应：同一面墙、同一件家具各放一张，标上拍摄时间。对不上位置或时间的，先记成「待核实」，不要当成已经证明。",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "ACTION",
+      "required_predicates": null,
+      "review_refs": [],
+      "semantic_sha256": "979e5ca56bbdd5eae1ce0bd2af8a079ddab3a4cd0c2b50e4834d98ec0afc2a13",
+      "slots": {},
+      "source_refs": [],
+      "template_id": "T_NAV_DEDUCTION_ITEMS",
+      "text": "把房东提的每一项拆开记：项目是什么（墙面／家具／清洁／水电）、在哪一位置、金额多少、有没有照片和费用单据。逐项对上之后，才看得出哪些有依据、哪些还需要对方说明。",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "QUESTION",
+      "required_predicates": {
+        "fact": "claimed_amount",
+        "op": "exists"
+      },
+      "review_refs": [],
+      "semantic_sha256": "41f3c5163cbd1ec3b126e9e9ad045ce8ea9dc64b1228a0890f5232b1322ea148",
+      "slots": {
+        "claimed_amount": {
+          "fact_key": "claimed_amount",
+          "required": true,
+          "source_kind": "fact",
+          "type": "money"
+        }
+      },
+      "source_refs": [],
+      "template_id": "T_Q_ITEM_DETAIL",
+      "text": "这 {claimed_amount} 元具体修哪几处、每一项怎么算出来的？",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "QUESTION",
+      "required_predicates": {
+        "of": {
+          "fact": "claimed_amount",
+          "op": "exists"
+        },
+        "op": "not"
+      },
+      "review_refs": [],
+      "semantic_sha256": "8b4e572127630ab5a339a2caf7395fc8ff6ee775e56d6f811826d06865dee124",
+      "slots": {},
+      "source_refs": [],
+      "template_id": "T_Q_ITEM_DETAIL_GENERIC",
+      "text": "扣款一共几项、每项多少钱？让房东把项目和金额分开列出来。",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "QUESTION",
+      "required_predicates": {
+        "of": [
+          {
+            "fact": "claimed_amount",
+            "op": "exists"
+          },
+          {
+            "fact": "deduction_items",
+            "op": "exists"
+          }
+        ],
+        "op": "any"
+      },
+      "review_refs": [],
+      "semantic_sha256": "9c38c83a03650d3c7082c5fdbca3889bb19913f41711009ff33ba82f233d0178",
+      "slots": {},
+      "source_refs": [],
+      "template_id": "T_Q_DAMAGE_CAUSE",
+      "text": "这个痕迹是什么时候出现的、怎么造成的？入住时就有了，还是后来才出现的？",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "LIMITATION",
+      "required_predicates": {
+        "fact": "image_attachment",
+        "op": "equals",
+        "value": true
+      },
+      "review_refs": [],
+      "semantic_sha256": "e46f80b09fd8b945188b5b6796ccc5c7bd78f6b63fa077824c10bd19c2e91a09",
+      "slots": {},
+      "source_refs": [],
+      "template_id": "T_LIMIT_NO_IMAGE_CLAIM",
+      "text": "你发了图片，但我这边没有可靠地「看」过它，不能凭它认定损坏程度或签名是否真实。方便的话，把图片里的文字内容贴出来，或者说明它拍的是哪里、什么时候拍的。",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "DRAFT",
+      "required_predicates": null,
+      "review_refs": [],
+      "semantic_sha256": "277177dcc67350f9d6f72d131175a2c4426c58bd6a63c94f5ab7b5aa0078afd0",
+      "slots": {},
+      "source_refs": [],
+      "template_id": "T_DRAFT_ASK_DETAIL",
+      "text": "可以先这样问房东（自己改过再发，别急着发）：\n「你好，押金的事我想核对一下。麻烦把需要扣款的位置、对应的照片，以及每项费用的明细发我，我想对照退房时的情况核实。谢谢。」",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "DRAFT",
+      "required_predicates": null,
+      "review_refs": [],
+      "semantic_sha256": "50bd2ae88a65fbe59d0e18cb747996b1d3cba3f7bf136a681e30f2e9c69dee18",
+      "slots": {},
+      "source_refs": [],
+      "template_id": "T_DRAFT_ASK_RETURN_TIME",
+      "text": "可以先这样问（自己改过再发）：\n「你好，想确认押金退还的安排：合同里约定的退还时间是什么时候、走什么流程？我这边把交接和费用情况核对完，麻烦一并告知。谢谢。」",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "DRAFT",
+      "required_predicates": {
+        "fact": "occupancy_still_living",
+        "op": "equals",
+        "value": false
+      },
+      "review_refs": [],
+      "semantic_sha256": "4e8453776b4203500af82ef4dc6275c45acaf2ebf64dd2c16b99dfdc1402b115",
+      "slots": {},
+      "source_refs": [],
+      "template_id": "T_DRAFT_CONFIRM_HANDOVER",
+      "text": "可以先这样确认（自己改过再发）：\n「你好，请把退房交接的记录——交接单、验收照片、钥匙交回时间——发我一份，我这边留存核对。谢谢。」",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "DRAFT",
+      "required_predicates": {
+        "fact": "occupancy_still_living",
+        "op": "equals",
+        "value": true
+      },
+      "review_refs": [],
+      "semantic_sha256": "2aad748ce8fe72c400d57a264b37b1a7be4951f9104c3ec20ea8445baa1806a6",
+      "slots": {},
+      "source_refs": [],
+      "template_id": "T_DRAFT_ASK_DEPOSIT_STATUS",
+      "text": "可以先这样问（自己改过再发）：\n「你好，我想提前确认一下：租赁结束时押金的结算条件和交接流程是怎么约定的？我按这个准备，免得退房时产生分歧。谢谢。」",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "SOURCE_LOCATOR",
+      "required_predicates": {
+        "of": [
+          {
+            "of": {
+              "fact": "jurisdiction",
+              "op": "exists"
+            },
+            "op": "not"
+          },
+          {
+            "fact": "jurisdiction",
+            "op": "equals",
+            "value": "CN_MAINLAND"
+          },
+          {
+            "fact": "jurisdiction",
+            "op": "equals",
+            "value": "UNKNOWN"
+          }
+        ],
+        "op": "any"
+      },
+      "review_refs": [],
+      "semantic_sha256": "3e1405ae13f3470499cc69cd24c4cf26acd1eb689ae0d5910ac0bd1253a75501",
+      "slots": {
+        "canonical_text": {
+          "provision_locator": "条=第七百一十条",
+          "required": true,
+          "source_kind": "source_article",
+          "type": "text"
+        },
+        "official_url": {
+          "field": "official_url",
+          "required": true,
+          "source_kind": "source_field",
+          "type": "text"
+        },
+        "retrieved_at": {
+          "field": "verified_at",
+          "required": true,
+          "source_kind": "source_field",
+          "type": "text"
+        }
+      },
+      "source_refs": [
+        {
+          "hash_kind": "CANONICAL_TEXT",
+          "id": "prc-civil-code-2020",
+          "provision_locator": "条=第七百一十条",
+          "sha256": "a693760635a535e9de7f97012e1700310ac2e0b69bafae3cfb6e8b63e0218077",
+          "version": "2020-05-28"
+        }
+      ],
+      "template_id": "T_SOURCE_CIVIL_710",
+      "text": "相关原文（只定位原文，不作解释）：《中华人民共和国民法典》第七百一十条——「{canonical_text}」\n来源：{official_url}；{retrieved_at} 取得。",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "SOURCE_LOCATOR",
+      "required_predicates": {
+        "of": [
+          {
+            "of": {
+              "fact": "jurisdiction",
+              "op": "exists"
+            },
+            "op": "not"
+          },
+          {
+            "fact": "jurisdiction",
+            "op": "equals",
+            "value": "CN_MAINLAND"
+          },
+          {
+            "fact": "jurisdiction",
+            "op": "equals",
+            "value": "UNKNOWN"
+          }
+        ],
+        "op": "any"
+      },
+      "review_refs": [],
+      "semantic_sha256": "346d6a1eedf25c37a43c9cdb989ec4450ce2d7264d7940b68ecc05f0ddbd31ba",
+      "slots": {
+        "canonical_text": {
+          "provision_locator": "条=第七百一十一条",
+          "required": true,
+          "source_kind": "source_article",
+          "type": "text"
+        },
+        "official_url": {
+          "field": "official_url",
+          "required": true,
+          "source_kind": "source_field",
+          "type": "text"
+        },
+        "retrieved_at": {
+          "field": "verified_at",
+          "required": true,
+          "source_kind": "source_field",
+          "type": "text"
+        }
+      },
+      "source_refs": [
+        {
+          "hash_kind": "CANONICAL_TEXT",
+          "id": "prc-civil-code-2020",
+          "provision_locator": "条=第七百一十一条",
+          "sha256": "9422db9e7525de1a986aad18f1d8a538f4690dbb449240f8ae9623c1d237133e",
+          "version": "2020-05-28"
+        }
+      ],
+      "template_id": "T_SOURCE_CIVIL_711",
+      "text": "相关原文（只定位原文，不作解释）：《中华人民共和国民法典》第七百一十一条——「{canonical_text}」\n来源：{official_url}；{retrieved_at} 取得。",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "SOURCE_LOCATOR",
+      "required_predicates": {
+        "of": [
+          {
+            "of": {
+              "fact": "jurisdiction",
+              "op": "exists"
+            },
+            "op": "not"
+          },
+          {
+            "fact": "jurisdiction",
+            "op": "equals",
+            "value": "CN_MAINLAND"
+          },
+          {
+            "fact": "jurisdiction",
+            "op": "equals",
+            "value": "UNKNOWN"
+          }
+        ],
+        "op": "any"
+      },
+      "review_refs": [],
+      "semantic_sha256": "184826d8696aa32a2ba0b7ae4a967287973a4133a4e4fcefc749fdab9797e350",
+      "slots": {
+        "canonical_text": {
+          "provision_locator": "条=第十条",
+          "required": true,
+          "source_kind": "source_article",
+          "type": "text"
+        },
+        "official_url": {
+          "field": "official_url",
+          "required": true,
+          "source_kind": "source_field",
+          "type": "text"
+        },
+        "retrieved_at": {
+          "field": "verified_at",
+          "required": true,
+          "source_kind": "source_field",
+          "type": "text"
+        }
+      },
+      "source_refs": [
+        {
+          "hash_kind": "CANONICAL_TEXT",
+          "id": "housing-rental-regulation-2025",
+          "provision_locator": "条=第十条",
+          "sha256": "79ea1248fb57f9fba1e1596dc000d0f6a33cc2eac5564739e6881d3857e75c8a",
+          "version": "2025-07-16"
+        }
+      ],
+      "template_id": "T_SOURCE_HOUSING_10",
+      "text": "相关原文（只定位原文，不作解释）：《住房租赁条例》（国务院令第812号）第十条——「{canonical_text}」\n来源：{official_url}；{retrieved_at} 取得。",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "LIMITATION",
+      "required_predicates": {
+        "of": [
+          {
+            "of": {
+              "fact": "jurisdiction",
+              "op": "exists"
+            },
+            "op": "not"
+          },
+          {
+            "fact": "jurisdiction",
+            "op": "equals",
+            "value": "CN_MAINLAND"
+          },
+          {
+            "fact": "jurisdiction",
+            "op": "equals",
+            "value": "UNKNOWN"
+          }
+        ],
+        "op": "any"
+      },
+      "review_refs": [],
+      "semantic_sha256": "fae4a01b4a0f678e5cda3bd6f2c160e702bf2fad0f4a420b57da14a4d5f6a30a",
+      "slots": {},
+      "source_refs": [
+        {
+          "hash_kind": "CANONICAL_TEXT",
+          "id": "housing-rental-regulation-2025",
+          "provision_locator": "条=第二条",
+          "sha256": "96b4c1760028760f939f9c744cc001f06ab2d63b72eac18f12e0a5393e923316",
+          "version": "2025-07-16"
+        }
+      ],
+      "template_id": "T_SCOPE_TIME_NOTE",
+      "text": "这个条例自 2025 年 9 月 15 日起施行，只适用于城镇国有土地上的住房租赁（第二条）。发生在施行之前的事情，不能当然按它处理；要不要适用、怎么用，需要结合时间和实际情况判断，本工具不下这个结论。",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "LIMITATION",
+      "required_predicates": {
+        "fact": "jurisdiction",
+        "op": "equals",
+        "value": "NON_MAINLAND"
+      },
+      "review_refs": [],
+      "semantic_sha256": "47252b4b1c9c5cf5207de526c9a50a8d0fee20dbf68d051b10f9a494f6cdbb86",
+      "slots": {},
+      "source_refs": [],
+      "template_id": "T_OUT_OF_REGION",
+      "text": "你说的地方不在中国大陆。我能核对的官方来源以中国大陆法律为限，所以先不给条文定位；不过材料整理照样能做：合同里的押金约定、交接记录、双方的文字往来，都可以先按上面的清单准备。",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "ACTION",
+      "required_predicates": {
+        "fact": "commercial_use",
+        "op": "equals",
+        "value": true
+      },
+      "review_refs": [],
+      "semantic_sha256": "c015cf166985b017ec1f7ce9071200b8748f6df4e7a50de5388b4a9113f81e41",
+      "slots": {},
+      "source_refs": [],
+      "template_id": "T_SCOPE_NONRESIDENTIAL_NAV",
+      "text": "你说的是商铺、办公这类非住宅租赁。住宅租赁的专门规定不一定适用，我先把能做的材料整理做完：押金数额与返还时间的约定、扣减押金的情形、交接记录，以及你和对方的文字往来。",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "ACTION",
+      "required_predicates": {
+        "of": [
+          {
+            "fact": "early_termination",
+            "op": "equals",
+            "value": true
+          },
+          {
+            "fact": "sublet",
+            "op": "equals",
+            "value": true
+          }
+        ],
+        "op": "any"
+      },
+      "review_refs": [],
+      "semantic_sha256": "4df9bf112b361c1f841cbca5cfbb34a79b2f8f8dfb65d1fe4edf1faec56f9a4a",
+      "slots": {},
+      "source_refs": [],
+      "template_id": "T_SCOPE_SHIFT_NAV",
+      "text": "你提到提前退租或转租，这会改变要看的材料：先看合同里关于提前解约、违约金、转租的约定，再把你发出的通知和对方的回复按时间记下来。押金部分仍按上面的清单核对，但责任怎么分，本工具不下结论。",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "LIMITATION",
+      "required_predicates": null,
+      "review_refs": [],
+      "semantic_sha256": "1c2f2c039579e854c2c314af3d8bcecd47366d0c21274effdd3fceca0f0ecb2a",
+      "slots": {
+        "conflict_summary": {
+          "derivation": "conflict_summary",
+          "required": true,
+          "source_kind": "derived",
+          "type": "text"
+        }
+      },
+      "source_refs": [],
+      "template_id": "T_UNKNOWN_CONFLICT",
+      "text": "你提到的事情里有不一致的地方：{conflict_summary}。两边说法我都先记着，不替你认定哪一方成立；等有交接单、聊天记录或照片这类材料，再一项项对。",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "LIMITATION",
+      "required_predicates": {
+        "op": "equals",
+        "signal": "asks_wear_conclusion",
+        "value": true
+      },
+      "review_refs": [],
+      "semantic_sha256": "cf3093cb2c34e6b62e0d295b6dc42e1d983c2f694cae697f40597933651735de",
+      "slots": {},
+      "source_refs": [],
+      "template_id": "T_NO_CONCLUDE_WEAR",
+      "text": "「是不是都算正常损耗」不能一概而论，要看三件事：使用方式是否符合约定或房屋性质、痕迹入住时是否已存在、有没有对应的照片和费用依据。这几项在没有材料之前，我不下结论。",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "LIMITATION",
+      "required_predicates": {
+        "op": "equals",
+        "signal": "asks_clause_validity",
+        "value": true
+      },
+      "review_refs": [],
+      "semantic_sha256": "1aac4e5a1b79ec761023e4688452116c72d6f50a5b7d0979d2a066fdcb7a1857",
+      "slots": {},
+      "source_refs": [],
+      "template_id": "T_LIMIT_CLAUSE_VALIDITY",
+      "text": "合同里写了这类扣款约定，它怎么认定、能不能按它执行，本工具不下结论。我能做的是：把这条原文、实际的痕迹情况和对方要扣的金额对应起来，让你拿去问律师或法律援助时，材料是齐的。",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "LIMITATION",
+      "required_predicates": {
+        "op": "equals",
+        "signal": "asks_legal_conclusion",
+        "value": true
+      },
+      "review_refs": [],
+      "semantic_sha256": "bac58ea1e1548402ccae1556bfff14e32516be394df10ae20a6b96fe4c2a565a",
+      "slots": {
+        "legal_topic": {
+          "required": false,
+          "signal_key": "legal_topic",
+          "source_kind": "signal",
+          "type": "text"
+        }
+      },
+      "source_refs": [],
+      "template_id": "T_PENDING_LEGAL",
+      "text": "关于「{legal_topic}」的法律结论，本工具当前没有开放（需要真实的专业法律复核通过后才启用）。材料清单和沟通草稿这部分，我照常帮你做完。",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "LIMITATION",
+      "required_predicates": null,
+      "review_refs": [],
+      "semantic_sha256": "1ecb4c03d0e60dab887a0781578274b81b21366f824fb27de8cca7f064f942be",
+      "slots": {},
+      "source_refs": [],
+      "template_id": "T_LIMIT_NO_LEGAL_CONCLUSION",
+      "text": "以上是一般信息，具体判断还要结合合同和实际情况。我能帮你核对材料和整理说法；「该不该扣、扣多少、多久必须退」这类结论，本工具当前没有开放，需要结合合同原文和实际情况判断，必要时咨询当地法律援助或律师。",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "SAFETY",
+      "required_predicates": {
+        "op": "equals",
+        "signal": "safety_now",
+        "value": true
+      },
+      "review_refs": [],
+      "semantic_sha256": "fae7fc7d9ca9ee80fcb285c036bb1a479ea99893cca8617bb900c5c4270c8219",
+      "slots": {},
+      "source_refs": [],
+      "template_id": "T_SAFETY_NOW",
+      "text": "先把眼前安全放在第一位。如果你现在正面临人身危险，请优先保证自身安全，并联系当地紧急求助：中国大陆报警 110、急救 120。押金的事可以之后再整理。",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "SAFETY",
+      "required_predicates": {
+        "op": "equals",
+        "signal": "safety_history",
+        "value": true
+      },
+      "review_refs": [],
+      "semantic_sha256": "17241280472e58ffb57cbc81424b297e5902808ab24d0ae7e1b0845e072a41dc",
+      "slots": {},
+      "source_refs": [],
+      "template_id": "T_SAFETY_HISTORY",
+      "text": "你提到的是过去发生的事。先确认一句：你现在安全吗？如果现在有危险，请立即联系当地紧急求助（中国大陆 110／120），这一条优先于押金问题。",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "LIMITATION",
+      "required_predicates": null,
+      "review_refs": [],
+      "semantic_sha256": "548de6829dff9f5c9a27a2a6e34be68790449a5ff403b5be2e957e3b565eec48",
+      "slots": {},
+      "source_refs": [],
+      "template_id": "T_ERROR_TECH",
+      "text": "这一步出了技术故障，本轮的材料分析没有完成。可以稍后再试一次；如果你愿意，也可以先把合同里押金那几条的原话发我，我从那里开始。",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "LIMITATION",
+      "required_predicates": null,
+      "review_refs": [],
+      "semantic_sha256": "0a21b3aa3bc1c6745d793e41976f693a8f0f545641417f43365b13613659c889",
+      "slots": {},
+      "source_refs": [],
+      "template_id": "T_MODEL_TIMEOUT",
+      "text": "本轮处理超时了，没有完成。可以再说一次你的问题，或者先告诉我你现在最想核对的那一项。",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "LIMITATION",
+      "required_predicates": null,
+      "review_refs": [],
+      "semantic_sha256": "8e855b24b46dbfd9e015bdcd2db0482d0ef7b119028ff579c01292f89c2418ef",
+      "slots": {},
+      "source_refs": [],
+      "template_id": "T_MODEL_UNAVAILABLE",
+      "text": "本轮没有连上本地模型，我按已经核对过的材料清单模板回答；涉及你具体情况的判断，仍请以合同原文为准。",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "LIMITATION",
+      "required_predicates": null,
+      "review_refs": [],
+      "semantic_sha256": "fbe5b805bca19c25433b68061d0fdffeaed20ac2494518ec38bc1db687b4ccf0",
+      "slots": {},
+      "source_refs": [],
+      "template_id": "T_OUT_OF_SCOPE_GENERIC",
+      "text": "这个方向我目前帮不上：本工具现在只处理「住宅租赁押金未退或被扣款」的材料核对与沟通整理。如果是别的事情，你可以说说具体情形，我先判断能不能整理材料；涉及法律结论的部分仍然没有开放。",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "LIMITATION",
+      "required_predicates": null,
+      "review_refs": [],
+      "semantic_sha256": "497bbafab4fa50edbdbf8fcd5569ad91b716f5cc4a97a19fe10353b507277712",
+      "slots": {},
+      "source_refs": [],
+      "template_id": "T_CONTEXT_TOO_LARGE",
+      "text": "这次内容太长了，我一次处理不完。请只发最相关的那一段——比如押金退还时间和扣减情形这两句——其余的分次看，我不会悄悄丢掉里面的关键条件。",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "LEGAL_EXPLANATION",
+      "required_predicates": null,
+      "review_refs": [],
+      "semantic_sha256": "19a0cd1e76d8d9b55c8f9006fad6cd0bff1b20689bf381a77704d892f65dc786",
+      "slots": {},
+      "source_refs": [
+        {
+          "hash_kind": "CANONICAL_TEXT",
+          "id": "prc-civil-code-2020",
+          "provision_locator": "条=第七百一十条",
+          "sha256": "a693760635a535e9de7f97012e1700310ac2e0b69bafae3cfb6e8b63e0218077",
+          "version": "2020-05-28"
+        }
+      ],
+      "template_id": "T_LEGAL_710_PLAIN",
+      "text": "【草稿，未启用】占位文本：本模板须经真实法律复核后方可启用。",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "LEGAL_EXPLANATION",
+      "required_predicates": null,
+      "review_refs": [],
+      "semantic_sha256": "c626d562dddf68b4d8e83b64a866196d40cef878482cb056e9e8ecb17f437308",
+      "slots": {},
+      "source_refs": [
+        {
+          "hash_kind": "CANONICAL_TEXT",
+          "id": "prc-civil-code-2020",
+          "provision_locator": "条=第七百一十条",
+          "sha256": "a693760635a535e9de7f97012e1700310ac2e0b69bafae3cfb6e8b63e0218077",
+          "version": "2020-05-28"
+        }
+      ],
+      "template_id": "T_LEGAL_710_UNKNOWN_KEEPING",
+      "text": "【草稿，未启用】占位文本：保管不善情形未明确时的条件式表达，须经真实法律复核后方可启用。",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "LEGAL_EXPLANATION",
+      "required_predicates": null,
+      "review_refs": [],
+      "semantic_sha256": "7bf7aa2da461ff8d1421ecb8211815aadebf94126591411a4ceabc37a21896d7",
+      "slots": {},
+      "source_refs": [
+        {
+          "hash_kind": "CANONICAL_TEXT",
+          "id": "prc-civil-code-2020",
+          "provision_locator": "条=第七百一十四条",
+          "sha256": "2d85f9ad6c5f5bf16ca71fddd39436871773d1e913adce461da2934f2bb8972c",
+          "version": "2020-05-28"
+        }
+      ],
+      "template_id": "T_LEGAL_714_PLAIN",
+      "text": "【草稿，未启用】占位文本：第七百一十四条相关白话，须经真实法律复核后方可启用。",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "LEGAL_EXPLANATION",
+      "required_predicates": null,
+      "review_refs": [],
+      "semantic_sha256": "81ff2c83c10b93b76979ca5f29fca868a5f101b1457b4dd0e8df4e47d174a66c",
+      "slots": {},
+      "source_refs": [
+        {
+          "hash_kind": "CANONICAL_TEXT",
+          "id": "prc-civil-code-2020",
+          "provision_locator": "条=第七百一十一条",
+          "sha256": "9422db9e7525de1a986aad18f1d8a538f4690dbb449240f8ae9623c1d237133e",
+          "version": "2020-05-28"
+        }
+      ],
+      "template_id": "T_LEGAL_711_PLAIN",
+      "text": "【草稿，未启用】占位文本：第七百一十一条相关白话，须经真实法律复核后方可启用。",
+      "version": "1.0.0"
+    },
+    {
+      "kind": "LEGAL_EXPLANATION",
+      "required_predicates": null,
+      "review_refs": [],
+      "semantic_sha256": "7036069c05a4e4c8481218300433d014c31fb4cccbf1e8bdc4d877a028ac5ed6",
+      "slots": {},
+      "source_refs": [
+        {
+          "hash_kind": "CANONICAL_TEXT",
+          "id": "prc-civil-code-2020",
+          "provision_locator": "条=第七百一十一条",
+          "sha256": "9422db9e7525de1a986aad18f1d8a538f4690dbb449240f8ae9623c1d237133e",
+          "version": "2020-05-28"
+        }
+      ],
+      "template_id": "T_LEGAL_711_CONDITIONAL",
+      "text": "【草稿，未启用】占位文本：第七百一十一条条件式表达，须经真实法律复核后方可启用。",
+      "version": "1.0.0"
+    }
+  ]
+}
