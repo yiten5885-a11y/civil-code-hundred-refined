@@ -1,0 +1,28 @@
+name: Verify alpha skill
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Program gate tests
+        run: python3 -m unittest discover -s tests -q
+      - name: Check development case catalog and closed legal exit
+        run: |
+          python3 tests/build_case_catalog.py
+          python3 tests/run_case_catalog.py
+          git diff --exit-code -- tests/cases.jsonl reports/CASE_DEVELOPMENT_RUN.json
+      - name: Build isolated alpha package
+        run: python3 scripts/package.py
+      - name: Check packaged behavior and excluded data
+        run: python3 tests/smoke_package.py
