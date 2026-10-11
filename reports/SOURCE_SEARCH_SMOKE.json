@@ -1,0 +1,48 @@
+{
+  "query": "押金",
+  "scope": "13 份本地已建分条索引；精确子串检索，非法律覆盖性审查",
+  "source_manifest_sha256": "f4b031d0a5f91792f8d2745d90739bd7da717acf9419acdf4de143602ee4f242",
+  "verified_source_count": 13,
+  "total_hits": 6,
+  "hits": [
+    {
+      "source_id": "contract_general",
+      "article": 67,
+      "article_sha256": "900346fde59219d23316e9ab94e9f1e18daa87f4c27b6e47028d6b58bc4b4dbb",
+      "source_url": "https://www.court.gov.cn/fabu/xiangqing/419382.html"
+    },
+    {
+      "source_id": "housing_lease",
+      "article": 10,
+      "article_sha256": "79ea1248fb57f9fba1e1596dc000d0f6a33cc2eac5564739e6881d3857e75c8a",
+      "source_url": "https://www.mee.gov.cn/zcwj/gwywj/202507/t20250722_1123995.shtml"
+    },
+    {
+      "source_id": "housing_lease",
+      "article": 25,
+      "article_sha256": "a13d29dc6ef3d039e173f5fdf5f6f8db122c62366da67a57fb914fc6f0111a34",
+      "source_url": "https://www.mee.gov.cn/zcwj/gwywj/202507/t20250722_1123995.shtml"
+    },
+    {
+      "source_id": "housing_lease",
+      "article": 35,
+      "article_sha256": "dd2ba26e29ce09eb57abadff7c655bb4eb7a9dbed8b03c39f9c7847680decc23",
+      "source_url": "https://www.mee.gov.cn/zcwj/gwywj/202507/t20250722_1123995.shtml"
+    },
+    {
+      "source_id": "housing_lease",
+      "article": 36,
+      "article_sha256": "c84962d4f8d5618684c817229c0e7ae92415cbfad52406772dd4eb837fca48cd",
+      "source_url": "https://www.mee.gov.cn/zcwj/gwywj/202507/t20250722_1123995.shtml"
+    },
+    {
+      "source_id": "housing_lease",
+      "article": 44,
+      "article_sha256": "f7061cccb7ac39108ac49d881871ea432f60688d9905a821274ee087ca67e7fb",
+      "source_url": "https://www.mee.gov.cn/zcwj/gwywj/202507/t20250722_1123995.shtml"
+    }
+  ],
+  "legal_effect_review": "未完成",
+  "applicability_review": "未完成",
+  "conclusion": "发现补充候选未输入的住房租赁条例第35条、合同编通则解释第67条；不代表这些条文必然适用"
+}

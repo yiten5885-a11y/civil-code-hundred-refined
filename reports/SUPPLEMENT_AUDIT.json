@@ -1,0 +1,105 @@
+{
+  "status": "未获法律专业复核",
+  "supplements": {
+    "loan_no_note": {
+      "candidate_sha256": "3ecedf7a06be0a963d63b8be36371692ac13b4982e538d65def2f416f55b4d94",
+      "input_article_count": 6,
+      "citation_count": 6,
+      "structure_pass": false,
+      "known_error_codes": [],
+      "known_error_screen_pass": true,
+      "uncited_article_mentions": [],
+      "third_turn_correction_signal": false,
+      "third_turn_correction_binding": false,
+      "source_manifest_changed_after_generation": true,
+      "manifest_change_review": "须复核新增或变更来源对本场景的影响",
+      "prompt_binding": "已重算输入选择与提示词哈希",
+      "legal_correctness_checked": false,
+      "professional_review": "未完成"
+    },
+    "loan_overdue": {
+      "candidate_sha256": "c3f467782db16b8d1e04a033d636f197e389a14ab168196db3957991840fe7df",
+      "input_article_count": 7,
+      "citation_count": 5,
+      "structure_pass": true,
+      "known_error_codes": [],
+      "known_error_screen_pass": true,
+      "uncited_article_mentions": [],
+      "third_turn_correction_signal": true,
+      "third_turn_correction_binding": true,
+      "source_manifest_changed_after_generation": true,
+      "manifest_change_review": "须复核新增或变更来源对本场景的影响",
+      "prompt_binding": "已重算输入选择与提示词哈希",
+      "legal_correctness_checked": false,
+      "professional_review": "未完成"
+    },
+    "divorce_agreement_registration": {
+      "candidate_sha256": "264da913a7006255f64065a149e1b7d9a91c801e08655aebdbb424961454c5c2",
+      "input_article_count": 7,
+      "citation_count": 3,
+      "structure_pass": false,
+      "known_error_codes": [],
+      "known_error_screen_pass": true,
+      "uncited_article_mentions": [
+        14
+      ],
+      "third_turn_correction_signal": false,
+      "third_turn_correction_binding": false,
+      "source_manifest_changed_after_generation": true,
+      "manifest_change_review": "须复核新增或变更来源对本场景的影响",
+      "prompt_binding": "已重算输入选择与提示词哈希",
+      "legal_correctness_checked": false,
+      "professional_review": "未完成"
+    },
+    "rent_repair": {
+      "candidate_sha256": "3837fb05956e710d550a7b4a8952009585977cd2f94b59b82d59956c2ad00d9a",
+      "input_article_count": 7,
+      "citation_count": 4,
+      "structure_pass": false,
+      "known_error_codes": [],
+      "known_error_screen_pass": true,
+      "uncited_article_mentions": [],
+      "third_turn_correction_signal": true,
+      "third_turn_correction_binding": false,
+      "source_manifest_changed_after_generation": true,
+      "manifest_change_review": "须复核新增或变更来源对本场景的影响",
+      "prompt_binding": "已重算输入选择与提示词哈希",
+      "legal_correctness_checked": false,
+      "professional_review": "未完成"
+    },
+    "rent_deposit": {
+      "candidate_sha256": "d83c16d1819d5b926861edcb1049439c73bf31bb0c7bb880c543a36750711454",
+      "input_article_count": 6,
+      "citation_count": 4,
+      "structure_pass": true,
+      "known_error_codes": [
+        "deposit_justification_inverted"
+      ],
+      "known_error_screen_pass": false,
+      "uncited_article_mentions": [],
+      "third_turn_correction_signal": true,
+      "third_turn_correction_binding": true,
+      "source_manifest_changed_after_generation": false,
+      "manifest_change_review": "无",
+      "prompt_binding": "已重算输入选择与提示词哈希",
+      "legal_correctness_checked": false,
+      "professional_review": "未完成"
+    },
+    "rent_early_end": {
+      "candidate_sha256": "5b7ebd39e9223761ffd1ee1b60c25b23f6ea39429736784776daafb0589061ad",
+      "input_article_count": 11,
+      "citation_count": 6,
+      "structure_pass": true,
+      "known_error_codes": [],
+      "known_error_screen_pass": true,
+      "uncited_article_mentions": [],
+      "third_turn_correction_signal": true,
+      "third_turn_correction_binding": true,
+      "source_manifest_changed_after_generation": true,
+      "manifest_change_review": "须复核新增或变更来源对本场景的影响",
+      "prompt_binding": "已重算输入选择与提示词哈希",
+      "legal_correctness_checked": false,
+      "professional_review": "未完成"
+    }
+  }
+}

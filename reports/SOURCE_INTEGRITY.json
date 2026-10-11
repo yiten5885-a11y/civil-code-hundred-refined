@@ -1,0 +1,29 @@
+{
+  "primary_count": 1260,
+  "primary_unique": 1260,
+  "secondary_count": 1260,
+  "books": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "hierarchy_counts": {
+    "book_heading": 7,
+    "division_heading": 8,
+    "chapter_heading": 84,
+    "section_heading": 37
+  },
+  "appendix_articles": [
+    1259,
+    1260
+  ],
+  "anomalies": [],
+  "cross_source_differences": [],
+  "hierarchy_differences": [],
+  "automated_integrity_pass": true,
+  "professional_review": "未完成"
+}
