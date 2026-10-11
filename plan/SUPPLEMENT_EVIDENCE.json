@@ -1,0 +1,114 @@
+{
+  "status": "工程候选输入，非法律适用或完整性审定",
+  "scenarios": {
+    "loan_no_note": {
+      "focus": "没有借条但有转账；区分交付记录与款项性质，核对双方约定、转账用途及对方可能提出的其他基础关系。司法解释中关于起诉和举证的条文不能写成所有日常沟通的绝对规则。",
+      "evidence": [
+        {"source_id": "civil_code", "article": 667},
+        {"source_id": "civil_code", "article": 679},
+        {"source_id": "private_lending_2020", "article": 2},
+        {"source_id": "private_lending_2020", "article": 14},
+        {"source_id": "private_lending_2020", "article": 16},
+        {"source_id": "time_effect", "article": 1}
+      ],
+      "required_citations": [
+        {"source_id": "private_lending_2020", "article": 16}
+      ]
+    },
+    "loan_overdue": {
+      "focus": "自然人借款约定期限届满后仍未归还：先核对借贷关系、实际交付、原约定到期日、是否展期和已偿还部分；不要把催款直接等同于诉讼时效必然安全。逾期利息须区分合同约定、司法解释中人民法院处理的条件与时间版本；不提供实时利率或个案金额计算。第三轮用户应明确更正先前一个事实，并重新判断哪些结论只能待核查。",
+      "evidence": [
+        {"source_id": "civil_code", "article": 188},
+        {"source_id": "civil_code", "article": 195},
+        {"source_id": "civil_code", "article": 675},
+        {"source_id": "civil_code", "article": 676},
+        {"source_id": "private_lending_2020", "article": 28},
+        {"source_id": "private_lending_2020", "article": 29},
+        {"source_id": "time_effect", "article": 1}
+      ],
+      "required_citations": [
+        {"source_id": "civil_code", "article": 675},
+        {"source_id": "civil_code", "article": 676},
+        {"source_id": "civil_code", "article": 195},
+        {"source_id": "private_lending_2020", "article": 28},
+        {"source_id": "time_effect", "article": 1}
+      ]
+    },
+    "divorce_agreement_registration": {
+      "focus": "离婚协议签署、登记机关收到申请、冷静期届满后申领离婚证是不同节点；核对双方亲自到场和不予受理的前提。2025年修订条例只供其施行后的流程审查，较早事实需查历史版本，不得把签署协议当天当作冷静期起点。",
+      "evidence": [
+        {"source_id": "civil_code", "article": 1076},
+        {"source_id": "civil_code", "article": 1077},
+        {"source_id": "civil_code", "article": 1078},
+        {"source_id": "marriage_registration_2025", "article": 13},
+        {"source_id": "marriage_registration_2025", "article": 14},
+        {"source_id": "marriage_registration_2025", "article": 16},
+        {"source_id": "marriage_registration_2025", "article": 28}
+      ],
+      "required_citations": [
+        {"source_id": "civil_code", "article": 1077},
+        {"source_id": "marriage_registration_2025", "article": 16},
+        {"source_id": "marriage_registration_2025", "article": 28}
+      ]
+    },
+    "rent_repair": {
+      "focus": "住房漏水与维修；核对合同维修约定、故障原因、承租人是否有过错、通知和修理时间。第713条的自行维修费用不能泛化为任何索赔。住房租赁条例的城镇国有土地范围、保障性住房与集体土地的另行规定及2025年9月15日施行日均需核查，不能只凭合同签署日期判定个案适用。第三轮用户必须明确更正前两轮所述的一个事实。",
+      "evidence": [
+        {"source_id": "civil_code", "article": 704},
+        {"source_id": "civil_code", "article": 712},
+        {"source_id": "civil_code", "article": 713},
+        {"source_id": "housing_lease", "article": 2},
+        {"source_id": "housing_lease", "article": 35},
+        {"source_id": "housing_lease", "article": 49},
+        {"source_id": "housing_lease", "article": 50}
+      ],
+      "required_citations": [
+        {"source_id": "civil_code", "article": 713},
+        {"source_id": "housing_lease", "article": 2},
+        {"source_id": "housing_lease", "article": 49},
+        {"source_id": "housing_lease", "article": 50}
+      ]
+    },
+    "rent_deposit": {
+      "focus": "退房后押金未退；第10条要求收押金时约定数额、返还时间和扣减情形，合同未写明不得被说成该条不适用；合同约定情形外的扣减仍须保留‘无正当理由’这一条件，不能一概断言。第49条对保障房仅在国家另有规定时从其规定，对集体土地要求省级政府制定办法，不能说一概排除或假定已有办法。第50条施行日不能只凭退房日期单点决定个案适用。第三轮更正合同条款后仍须核查扣减事实和理由。",
+      "evidence": [
+        {"source_id": "civil_code", "article": 703},
+        {"source_id": "civil_code", "article": 733},
+        {"source_id": "housing_lease", "article": 2},
+        {"source_id": "housing_lease", "article": 10},
+        {"source_id": "housing_lease", "article": 49},
+        {"source_id": "housing_lease", "article": 50}
+      ],
+      "required_citations": [
+        {"source_id": "housing_lease", "article": 2},
+        {"source_id": "housing_lease", "article": 10},
+        {"source_id": "housing_lease", "article": 49},
+        {"source_id": "housing_lease", "article": 50}
+      ]
+    },
+    "rent_early_end": {
+      "focus": "承租人想提前退租：先核对租期能否确定、提前解约条款、双方是否达成解除合意、实际退房与通知记录。合同未写租期也应先按第510条查补充协议、相关条款和交易习惯，不能立即视为不定期；在未确认租期前，第二轮不得自行假定是固定期限。不得把固定期限合同中的单方通知等同于当然解除，也不得把房东未回消息等同于同意。合同编通则解释第61条只针对定期持续性合同中一方不支付租金等金钱债务、对方请求解除且法院认为应依法解除时的特定可得利益计算，不能泛化为所有提前退租，也不能直接认定须付全部剩余租金。注意原文版本和事实时间；第三轮要明确撤回先前用户说过的事实。",
+      "evidence": [
+        {"source_id": "civil_code", "article": 510},
+        {"source_id": "civil_code", "article": 562},
+        {"source_id": "civil_code", "article": 563},
+        {"source_id": "civil_code", "article": 565},
+        {"source_id": "civil_code", "article": 566},
+        {"source_id": "civil_code", "article": 577},
+        {"source_id": "civil_code", "article": 730},
+        {"source_id": "contract_general", "article": 52},
+        {"source_id": "contract_general", "article": 53},
+        {"source_id": "contract_general", "article": 61},
+        {"source_id": "time_effect", "article": 1}
+      ],
+      "required_citations": [
+        {"source_id": "civil_code", "article": 510},
+        {"source_id": "civil_code", "article": 562},
+        {"source_id": "civil_code", "article": 563},
+        {"source_id": "civil_code", "article": 730},
+        {"source_id": "contract_general", "article": 53},
+        {"source_id": "contract_general", "article": 61}
+      ]
+    }
+  }
+}
