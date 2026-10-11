@@ -1,0 +1,13 @@
+{
+  "primary_source_id": "private_lending_2020",
+  "second_url": "https://cicc.court.gov.cn/html/1/218/62/84/12844.html",
+  "second_raw_sha256": "e06b0b6975c507da2712e8af1db50676fdd14d3f2f7907ee3e58e5c23417e494",
+  "second_normalized_sha256": "8e32bfe393795c4e0aff31568202167cda12463662786ec0b72aef639d7e7a05",
+  "primary_count": 31,
+  "second_count": 31,
+  "cross_source_differences": [],
+  "anomalies": [],
+  "automated_text_match": true,
+  "effect_review": "未完成",
+  "professional_review": "未完成"
+}

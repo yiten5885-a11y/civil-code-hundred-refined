@@ -1,0 +1,26 @@
+{
+  "urban_lease_2020": {
+    "raw_source_id": "loan_lease_2020",
+    "raw_section_sha256": "930c983841e852ecf958a3cabe2bedec5fac90a432f434e6a44ee2ea0df3858e",
+    "normalized_sha256": "5d02ed74a3a78b0d4f394a85271b3d65559dc957afe3f0920455b0f9e265892a",
+    "article_count": 16,
+    "first_article": 1,
+    "last_article": 16,
+    "full_body_exact": true,
+    "anomalies": [],
+    "effect_review": "未完成",
+    "professional_review": "未完成"
+  },
+  "private_lending_2020": {
+    "raw_source_id": "loan_lease_2020",
+    "raw_section_sha256": "2f6a52f2c3f8bdcfe1fc82313a318a47f2467c8d58fb6270caa13a496113ef18",
+    "normalized_sha256": "8e32bfe393795c4e0aff31568202167cda12463662786ec0b72aef639d7e7a05",
+    "article_count": 31,
+    "first_article": 1,
+    "last_article": 31,
+    "full_body_exact": true,
+    "anomalies": [],
+    "effect_review": "未完成",
+    "professional_review": "未完成"
+  }
+}

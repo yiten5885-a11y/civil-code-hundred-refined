@@ -1,0 +1,21 @@
+{
+  "source_ids": [
+    "marriage_registration_2025",
+    "marriage_registration_moj"
+  ],
+  "article_count": 28,
+  "normalized_differences": [],
+  "source_hashes": {
+    "marriage_registration_2025": {
+      "raw_sha256": "995e6db5d3158beea9056a8d82701da746224a96db2432729b51ffca04b1f1a3",
+      "normalized_sha256": "cbac4155f23dfc85084d0a0b403c07d69ac3a2e5670de0380b9ce7bb288bc5b4"
+    },
+    "marriage_registration_moj": {
+      "raw_sha256": "aebd3054c6748278089a2adb303d1879e0e8b298fe689b991088f058fb54cafb",
+      "normalized_sha256": "b817a4f2e56d490435d41f6aa55274d62262377b7b4d1c2408271d42b13dc86e"
+    }
+  },
+  "text_integrity_pass": true,
+  "legal_effect_review": "未完成",
+  "legal_correctness_checked": false
+}
