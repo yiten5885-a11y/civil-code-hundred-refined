@@ -1,0 +1,93 @@
+{
+  "time_effect": {
+    "article_count": 28,
+    "unique": 28,
+    "section_headings_excluded": [
+      "二、溯及适用的具体规定",
+      "三、衔接适用的具体规定",
+      "四、附则"
+    ],
+    "effective_on_from_last_article": "2021-01-01",
+    "anomalies": [],
+    "professional_review": "未完成"
+  },
+  "marriage_1": {
+    "article_count": 91,
+    "unique": 91,
+    "section_headings_excluded": [
+      "二、结婚",
+      "三、夫妻关系",
+      "四、父母子女关系",
+      "五、离婚",
+      "六、附则"
+    ],
+    "effective_on_from_last_article": "2021-01-01",
+    "anomalies": [],
+    "professional_review": "未完成"
+  },
+  "marriage_2": {
+    "article_count": 23,
+    "unique": 23,
+    "section_headings_excluded": [],
+    "effective_on_from_last_article": "2025-02-01",
+    "anomalies": [],
+    "professional_review": "未完成"
+  },
+  "marriage_registration_2025": {
+    "article_count": 28,
+    "unique": 28,
+    "section_headings_excluded": [],
+    "effective_on_from_last_article": "2025-05-10",
+    "anomalies": [],
+    "professional_review": "未完成"
+  },
+  "marriage_registration_moj": {
+    "article_count": 28,
+    "unique": 28,
+    "section_headings_excluded": [],
+    "effective_on_from_last_article": "2025-05-10",
+    "anomalies": [],
+    "professional_review": "未完成"
+  },
+  "contract_general": {
+    "article_count": 69,
+    "unique": 69,
+    "section_headings_excluded": [
+      "二、合同的订立",
+      "三、合同的效力",
+      "四、合同的履行",
+      "五、合同的保全",
+      "六、合同的变更和转让",
+      "七、合同的权利义务终止",
+      "八、违约责任",
+      "九、附则"
+    ],
+    "effective_on_from_last_article": "2023-12-05",
+    "anomalies": [],
+    "professional_review": "未完成"
+  },
+  "housing_lease": {
+    "article_count": 50,
+    "unique": 50,
+    "section_headings_excluded": [],
+    "effective_on_from_last_article": "2025-09-15",
+    "anomalies": [],
+    "professional_review": "未完成"
+  },
+  "anti_violence": {
+    "article_count": 38,
+    "unique": 38,
+    "section_headings_excluded": [],
+    "effective_on_from_last_article": "2016-03-01",
+    "anomalies": [],
+    "professional_review": "未完成"
+  },
+  "protection_order": {
+    "article_count": 13,
+    "unique": 13,
+    "section_headings_excluded": [],
+    "effective_on_from_last_article": "2022-08-01",
+    "anomalies": [],
+    "professional_review": "未完成"
+  }
+}

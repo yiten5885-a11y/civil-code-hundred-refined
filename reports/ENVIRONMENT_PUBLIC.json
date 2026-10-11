@@ -1,0 +1,11 @@
+{
+  "service_version": "0.35.1",
+  "notes": "读取既有服务；未更改服务配置",
+  "model_id": "qwen3.8:27b",
+  "model_digest": "aaee06c39dcf2437cde036998d960e1fc1494b8191be7cc9657d01e509097813",
+  "quantization": "Q4_K_M",
+  "observed_server_context": "65536 (ollama ps observation)",
+  "candidate_request_num_ctx": 3072,
+  "candidate_request_num_predict": 700,
+  "candidate_request_temperature": 0.2
+}

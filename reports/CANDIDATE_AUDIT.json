@@ -1,0 +1,57 @@
+{
+  "expected_scenes": 12,
+  "saved_scenes": 12,
+  "structure_pass": true,
+  "professional_review": "未完成",
+  "legal_correctness_checked": false,
+  "scenes": {
+    "loan_no_note": {
+      "structure_pass": true,
+      "issues": []
+    },
+    "loan_overdue": {
+      "structure_pass": true,
+      "issues": []
+    },
+    "loan_no_due_date": {
+      "structure_pass": true,
+      "issues": []
+    },
+    "loan_interest_or_investment": {
+      "structure_pass": true,
+      "issues": []
+    },
+    "rent_deposit": {
+      "structure_pass": true,
+      "issues": []
+    },
+    "rent_early_end": {
+      "structure_pass": true,
+      "issues": []
+    },
+    "rent_repair": {
+      "structure_pass": true,
+      "issues": []
+    },
+    "rent_move_or_sublet": {
+      "structure_pass": true,
+      "issues": []
+    },
+    "marital_home_timing": {
+      "structure_pass": true,
+      "issues": []
+    },
+    "marital_wages_savings": {
+      "structure_pass": true,
+      "issues": []
+    },
+    "marital_payment_source": {
+      "structure_pass": true,
+      "issues": []
+    },
+    "divorce_agreement_registration": {
+      "structure_pass": true,
+      "issues": []
+    }
+  }
+}
